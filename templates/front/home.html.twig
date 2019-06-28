@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+
+    <h1>Bienvenue !</h1>
+
+    <div id="carouselExampleSlidesOnly" class="carousel slide mt-5" data-interval="false" data-ride="carousel">
+        <div class="carousel-inner">
+            {% for card in cards %}
+                <div class="carousel-item {% if isFirst %}active{% endif %}">
+                    <article>
+                        <h2>{{ card.recto }} | ({{ card.datePublication | date("Y/m/d") }}) </h2>
+                        <hr>
+                        <div>{{ card.verso }}</div>
+                    </article>
+                </div>
+                {% set isFirst = false %}  
+            {% endfor %}
+        </div>
+    </div>
+
+
+{% endblock %}
