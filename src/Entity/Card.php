@@ -44,9 +44,9 @@ class Card
     private $step = 1;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Tag", mappedBy="cards")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Tag", mappedBy="cards", fetch="EAGER")
      */
-    private $tags = 1;
+    private $tags;
 
     public function __construct()
     {
@@ -144,5 +144,10 @@ class Card
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        $this->recto;
     }
 }

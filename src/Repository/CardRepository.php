@@ -60,9 +60,12 @@ class CardRepository extends ServiceEntityRepository
         $today->setTime(23, 59, 59); // today is saved as the end of the day, to fetch all the card due today
 
         $qb = $this->createQueryBuilder('p')
-            ->setParameter('today', $today)
+/*          ->select('p')
+            ->innerJoin('p.tags', 't', 'WITH', 't.id = :id')
+            ->where('p.id = :id') */
             ->andWhere('p.datePublication <= :today')
             ->orderBy('p.datePublication', 'ASC')
+            ->setParameter('today', $today)
             ->setMaxResults($limit)
             ->getQuery();
 

@@ -24,7 +24,7 @@ class Tag
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Card", inversedBy="tags")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Card", inversedBy="tags", fetch="EAGER")
      */
     private $cards;
 
@@ -74,5 +74,10 @@ class Tag
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

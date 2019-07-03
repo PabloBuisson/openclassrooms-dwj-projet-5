@@ -1,0 +1,12 @@
+easy_admin:
+    design:
+        menu: 
+            - label: 'Paquet'
+              icon: 'archive'
+              children:
+                - { entity: 'Card', icon: 'clone' }
+                - { entity: 'Tag', icon: 'tags' }
+        brand-color: 'orange'
+    site_name: 'Admin'
+    formats:
+        datetime: 'd/m/Y'

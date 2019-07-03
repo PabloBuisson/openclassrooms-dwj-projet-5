@@ -19,6 +19,9 @@ class FrontController extends AbstractController
         // $limit = $UserLimit->getLimit()
 
         $cards = $repo->findDailyCards(new \DateTime(), $limit);
+        /* $cards = $repo->findAll(); */
+
+        /* dd($cards); */
 
         return $this->render('front/home.html.twig', [
             'cards' => $cards,
