@@ -6,6 +6,7 @@ easy_admin:
               children:
                 - { entity: 'Card', icon: 'clone' }
                 - { entity: 'Tag', icon: 'tags' }
+            - { entity: 'User', icon: 'cog' }
         brand-color: 'orange'
     site_name: 'Admin'
     formats:
