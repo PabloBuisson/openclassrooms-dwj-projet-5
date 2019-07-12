@@ -29,16 +29,25 @@
                             <a class="nav-link" href="{{ path('presentation') }}">Présentation</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Ajouter</a>
+                            <a class="nav-link" href="{{ path('easyadmin')}}">Ajouter</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Admin</a>
+                            <a class="nav-link" href="{{ path('easyadmin')}}">Admin</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Connexion</a>
-                        </li>
+
+                        {% if not app.user %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('security_login')}}">Connexion</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('security_logout')}}">Déconnexion</a>
+                            </li>
+                        {% endif %}
+                        
+
                     </ul>
                 </div>
             </div>

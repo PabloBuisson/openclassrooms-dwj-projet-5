@@ -152,6 +152,11 @@ class Card
         return $this;
     }
 
+    public function clearTags()
+    {
+        $this->getTags()->clear();
+    }
+
     public function __toString()
     {
         $this->recto;

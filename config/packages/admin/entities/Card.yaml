@@ -6,10 +6,10 @@ easy_admin:
             label: 'Cartes'
             form:
                 fields: 
-                    - { property: 'recto', label: 'Recto' }
-                    - { property: 'verso', label: 'Verso' }
+                    - { property: 'recto', label: 'Recto', help: 'Le sujet à apprendre' }
+                    - { property: 'verso', label: 'Verso', help: 'Sa définition' }
                     - { property: 'datePublication', label: 'Prochaine révision' }
-                    - { property: 'tags', label: 'Marqueurs', type_options: { 'by_reference': false } }
+                    - { property: 'tags', label: 'Tags', type_options: { class: 'App\Entity\Tag', 'by_reference': false }} #, query_builder: 'App\Controller\TagController::getTagsUser'
             list:
                 fields: [{property: 'recto', label: 'Cartes'}, {property: 'tags', label: 'Tags'}, {property: 'datePublication', label: 'Prochaine révision'}]
                 title: "Parcourez vos flashcards"
