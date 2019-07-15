@@ -6,22 +6,30 @@ use App\Entity\Card;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Repository\CardRepository;
+use App\Repository\UserRepository;
 
 class FrontController extends AbstractController
 {
     /**
      * @Route("/", name="home")
      */
-    public function home(CardRepository $repo)
+    public function home(CardRepository $repoCard, UserRepository $repoUser)
     {
-        $limit = 5; // limit of daily cards, defined by user
-        // $UserLimit = $repoU->find($id user)
-        // $limit = $UserLimit->getLimit()
+        // current user id
+        $user = $this->getUser()->getId();
 
-        $cards = $repo->findDailyCards(new \DateTime(), $limit);
-        /* $cards = $repo->findAll(); */
+        // object of the current user
+        $userCard = $repoUser->find($user);
 
-        /* dd($cards); */
+        // limit of daily cards, defined by user
+        $limit = $userCard->getDailyLimit();
+
+        // limit of daily cards - amount of cards already done
+/*      $revision = $repoRevision->find($user);
+        $done = $revision->count();
+        $number = ($limit - $done); */
+
+        $cards = $repoCard->findDailyCards(new \DateTime(), $limit, $user);
 
         return $this->render('front/home.html.twig', [
             'cards' => $cards,
