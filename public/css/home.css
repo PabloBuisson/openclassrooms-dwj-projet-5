@@ -8,6 +8,11 @@
     overflow: visible !important;
 }
 
+.count-user {
+    color: #EC8B32;
+    font-weight: bold;
+}
+
 .card-user {
     box-shadow: 5px 5px 15px grey !important;
     border: 2px solid #EC8B32;

@@ -19,10 +19,15 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .nav-front {
-    color: rgba(255, 255, 255, 0.8) !important;
+    color: white !important;
     font-size: 16px;
 }
 
 .nav-front:hover, .nav-front:active, .nav.front:focus {
     color: white !important;
+    text-shadow: 2px 2px 2px rgb(195, 116, 41);
+}
+
+.navbar-brand:hover, .nav-brand:active, .nav-brand:focus {
+    text-shadow: 2px 2px 2px rgb(195, 116, 41);
 }

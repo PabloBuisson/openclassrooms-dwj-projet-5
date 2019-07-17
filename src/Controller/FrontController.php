@@ -7,15 +7,18 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Repository\CardRepository;
 use App\Repository\UserRepository;
+use App\Repository\DailyCountRepository;
 
 class FrontController extends AbstractController
 {
     /**
      * @Route("/", name="home")
      */
-    public function home(CardRepository $repoCard, UserRepository $repoUser)
+    public function home(CardRepository $repoCard, UserRepository $repoUser, DailyCountRepository $repoCount)
     {
         $cards = null;
+        $count = null;
+        $due = null;
 
         if ($this->getUser()) // if the user is connected
         {
@@ -23,22 +26,30 @@ class FrontController extends AbstractController
             $user = $this->getUser()->getId();
 
             // object of the current user
-            $userCard = $repoUser->find($user);
+            $userParam = $repoUser->find($user);
 
             // limit of daily cards, defined by user
-            $limit = $userCard->getDailyLimit();
+            $userLimit = $userParam->getDailyLimit();
 
-            // limit of daily cards - amount of cards already done
-         /* $revision = $repoRevision->find($user);
-            $done = $revision->count();
-            $number = ($limit - $done); */
+            // cards due = (limit of daily cards - amount of cards already done today)
+            $userCount = $repoCount->findOneBy([
+                'user' => $user
+            ]);
+            $count = $userCount->getCount();
+            $limit = ($userLimit - $count);
+
+            // dd($limit);
 
             $cards = $repoCard->findDailyCards(new \DateTime(), $limit, $user);
+
+            $due = count($cards);
         }
 
         return $this->render('front/home.html.twig', [
             'cards' => $cards,
-            'isFirst' => true
+            'isFirst' => true,
+            'count' => $count,
+            'due' => $due
         ]);
     }
 

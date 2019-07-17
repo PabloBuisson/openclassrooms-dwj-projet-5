@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\DailyCount;
 use App\Form\RegistrationType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -33,6 +34,12 @@ class SecurityController extends AbstractController
         {
             $hash = $encoder->encodePassword($user, $user->getPassword());
             $user->setPassword($hash);
+
+            // add daily count to User parameters
+            $userCount = new DailyCount();
+            $userCount->setUser($user);
+            $manager->persist($userCount);
+
             $manager->persist($user);
             $manager->flush();
 

@@ -18,6 +18,9 @@
                 {% for card in cards %}
                     <div class="carousel-item col-8 offset-2 {% if isFirst %}active{% endif %}">
                         <article class="card-user text-center p-5">
+                            <div class="row">
+                                <div class="col-2 offset-10 mb-3 mt-n3 count-user"><span class="user-count">{{ due }}</span><span class="fa fa-clock-o d-inline-block ml-1" aria-hidden="true"></span> | <span class="user-limit">{{ count }}</span><span class="fa fa-check d-inline-block ml-1" aria-hidden="true"></span></div>
+                            </div>
                             <h2>{{ card.recto }}</h2>
                             <div class="tag-container"> 
                                 {% for tag in card.tags %}
