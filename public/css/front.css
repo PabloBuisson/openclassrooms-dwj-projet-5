@@ -1,0 +1,28 @@
+
+/* ---------- HEADER ---------- */
+
+body {
+    font-family: 'Nunito', sans-serif !important;
+}
+
+#bloc-page .bg-primary .navbar-nav .active>.nav-link {
+    color: white !important;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	color: grey !important;
+}
+
+#bloc-page .bg-primary {
+    background-color: #EC8B32 !important;
+    background-image: none;
+}
+
+.nav-front {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-size: 16px;
+}
+
+.nav-front:hover, .nav-front:active, .nav.front:focus {
+    color: white !important;
+}

@@ -1,0 +1,23 @@
+
+
+/* ---------- SECTION CARD ---------- */
+
+.carousel-inner {
+    position: relative;
+    width: 100%;
+    overflow: visible !important;
+}
+
+.card-user {
+    box-shadow: 5px 5px 15px grey !important;
+    border: 2px solid #EC8B32;
+    border-radius: 5px;
+}
+
+.tag-user {
+    border: 1px solid #EC8B32;
+    border-radius: 5px;
+    color: #EC8B32;
+    font-size: 12px;
+    padding: 2px 8px 2px 8px;
+}

@@ -6,55 +6,61 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>{% block title %}{% endblock %} | FlashCards</title>
         {% block stylesheets %}{% endblock %}
-        <link rel="stylesheet" href="https://bootswatch.com/4/litera/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/front.css') }}">
+        <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css"><!-- before : litera -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
 
     <body>
 
-        <nav class="navbar navbar-expand-md navbar-dark bg-primary">
-            <div class="container">
-                <a class="navbar-brand" href="{{ path('home') }}">FlashCards</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTools"
-                    aria-controls="navbarTools" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <div id="bloc-page">
 
-                <div class="collapse navbar-collapse"
-                    id="navbarTools">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ path('home') }}">Accueil <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('presentation') }}">Présentation</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('easyadmin')}}">Ajouter</a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('easyadmin')}}">Admin</a>
-                        </li>
+            <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+                <div class="container">
+                    <a class="navbar-brand" href="{{ path('home') }}">FlashCards</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTools"
+                        aria-controls="navbarTools" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-                        {% if not app.user %}
+                    <div class="collapse navbar-collapse"
+                        id="navbarTools">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link d-inline nav-front" href="{{ path('home') }}"><span class="fa fa-home d-inline-block mr-1" aria-hidden="true"></span> Accueil <span class="sr-only">(current)</span></a>
+                            </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ path('security_login')}}">Connexion</a>
+                                <a class="nav-link d-inline nav-front" href="{{ path('presentation') }}"><span class="fa fa-lightbulb-o d-inline-block mr-1" aria-hidden="true"></span> Présentation</a>
+                            </li>
+                        {% if app.user %}
+                            <li class="nav-item">
+                                <a class="nav-link d-inline nav-front" href="{{ path('easyadmin', {entity: 'Card', action: 'new'}) }}"><span class="fa fa-pencil d-inline-block mr-1" aria-hidden="true"></span> Ajouter</a>
+                            </li>
+                        {% endif %}
+                        </ul>
+                        <ul class="navbar-nav ml-auto">
+                        {% if app.user %}
+                            <li class="nav-item">
+                                <a class="nav-link nav-front" href="{{ path('easyadmin')}}"><span class="fa fa-cog d-inline-block mr-1" aria-hidden="true"></span> Admin</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-front" href="{{ path('security_logout')}}">Déconnexion</a>
                             </li>
                         {% else %}
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ path('security_logout')}}">Déconnexion</a>
+                                <a class="nav-link nav-front" href="{{ path('security_login')}}">Connexion</a>
                             </li>
                         {% endif %}
-                        
-
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
 
-        <div class="container">
-            {% block body %}{% endblock %}  
+            <div class="container main-section">
+                {% block body %}{% endblock %}  
+            </div>
+
         </div>
         
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

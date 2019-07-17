@@ -15,21 +15,26 @@ class FrontController extends AbstractController
      */
     public function home(CardRepository $repoCard, UserRepository $repoUser)
     {
-        // current user id
-        $user = $this->getUser()->getId();
+        $cards = null;
 
-        // object of the current user
-        $userCard = $repoUser->find($user);
+        if ($this->getUser()) // if the user is connected
+        {
+            // current user id
+            $user = $this->getUser()->getId();
 
-        // limit of daily cards, defined by user
-        $limit = $userCard->getDailyLimit();
+            // object of the current user
+            $userCard = $repoUser->find($user);
 
-        // limit of daily cards - amount of cards already done
-/*      $revision = $repoRevision->find($user);
-        $done = $revision->count();
-        $number = ($limit - $done); */
+            // limit of daily cards, defined by user
+            $limit = $userCard->getDailyLimit();
 
-        $cards = $repoCard->findDailyCards(new \DateTime(), $limit, $user);
+            // limit of daily cards - amount of cards already done
+         /* $revision = $repoRevision->find($user);
+            $done = $revision->count();
+            $number = ($limit - $done); */
+
+            $cards = $repoCard->findDailyCards(new \DateTime(), $limit, $user);
+        }
 
         return $this->render('front/home.html.twig', [
             'cards' => $cards,

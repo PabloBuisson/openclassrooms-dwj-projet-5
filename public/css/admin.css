@@ -1,0 +1,66 @@
+body {
+    font-family: 'Nunito', sans-serif !important;
+}
+
+/* ---------- HEADER --------- */
+
+#background-nav {
+    height: 72px;
+    width: auto;
+    background-color: #EC8B32;
+    top: 0;
+    z-index: 300000000;
+    margin-bottom: -69px;
+}
+
+.main-header {
+    margin-bottom: 20px;
+}
+
+.nav-front {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 16px;
+}
+
+.nav-front:hover, .nav-front:active, .nav.front:focus {
+    color: white;
+}
+
+a.user-action-logout {
+    color: #EC8B32;
+}
+
+a.user-action-logout:hover {
+    color: #EC8B32;
+    font-weight: bold;
+}
+
+#navigation-toggler.mt-n3 {
+    filter: opacity(100%);
+    font-size: 24px;
+}
+
+#navigation-toggler .fa-bars {
+    color: white;
+}
+
+/* ---------- TABLE ---------- */
+
+.content-header-title .title {
+    color: #EC8B32;
+    font-size: 18px !important;
+    font-weight: bold;
+}
+
+.badge-secondary {
+    font-family: var(--font-family-base);
+}
+
+a.btn.btn-link.pr-0.action-list {
+    color: #EC8B32;
+    font-weight: bold;
+}
+
+.form-actions .btn {
+    margin-left: 25px !important;
+}
