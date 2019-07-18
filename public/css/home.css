@@ -26,3 +26,8 @@
     font-size: 12px;
     padding: 2px 8px 2px 8px;
 }
+
+[id^=form-card-] .form-group {
+    display: inline-block;
+    margin-left: 20px;
+}

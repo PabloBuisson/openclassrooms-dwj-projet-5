@@ -14,9 +14,10 @@
     {% else %}
 
         <div id="carouselExampleSlidesOnly" class="carousel slide mt-5" data-interval="false" data-ride="carousel">
+            
             <div class="carousel-inner row">
                 {% for card in cards %}
-                    <div class="carousel-item col-8 offset-2 {% if isFirst %}active{% endif %}">
+                    <div id={{ "card-" ~ card.id }} class="carousel-item col-8 offset-2 {% if isFirst %}active{% endif %}">
                         <article class="card-user text-center p-5">
                             <div class="row">
                                 <div class="col-2 offset-10 mb-3 mt-n3 count-user"><span class="user-count">{{ due }}</span><span class="fa fa-clock-o d-inline-block ml-1" aria-hidden="true"></span> | <span class="user-limit">{{ count }}</span><span class="fa fa-check d-inline-block ml-1" aria-hidden="true"></span></div>
@@ -28,9 +29,17 @@
                                 {% endfor %}
                             </div>
                             <button type="button" class="btn btn-info mt-5">Voir la réponse</button>
+                            
                             <div class="verso-container">
                                 <hr>
                                 <div>{{ card.verso }}</div>
+                                <div class="card-form mt-5">
+                                    {{ form_start(formCard, {'attr': {'id': 'form-card-' ~ card.id }}) }}
+
+                                    <input type="hidden" name="card-id" value="{{ card.id }}">
+
+                                    {{ form_end(formCard) }}
+                                </div>
                             </div>
                         </article>
                     </div>

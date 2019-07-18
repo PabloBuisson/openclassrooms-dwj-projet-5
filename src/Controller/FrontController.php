@@ -3,24 +3,31 @@
 namespace App\Controller;
 
 use App\Entity\Card;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Form\CardType;
 use App\Repository\CardRepository;
 use App\Repository\UserRepository;
 use App\Repository\DailyCountRepository;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\Common\Persistence\ObjectManager;
 
 class FrontController extends AbstractController
 {
     /**
      * @Route("/", name="home")
      */
-    public function home(CardRepository $repoCard, UserRepository $repoUser, DailyCountRepository $repoCount)
+    public function home(Card $card = null, CardRepository $repoCard, UserRepository $repoUser, DailyCountRepository $repoCount, Request $request, ObjectManager $manager)
     {
+        // dull data for anonymous user
         $cards = null;
         $count = null;
         $due = null;
 
-        if ($this->getUser()) // if the user is connected
+        $form = $this->createForm(CardType::class, $card);
+
+        // if the user is connected
+        if ($this->getUser())
         {
             // current user id
             $user = $this->getUser()->getId();
@@ -38,18 +45,37 @@ class FrontController extends AbstractController
             $count = $userCount->getCount();
             $limit = ($userLimit - $count);
 
-            // dd($limit);
-
             $cards = $repoCard->findDailyCards(new \DateTime(), $limit, $user);
+            $due = count($cards); // number of cards due today
 
-            $due = count($cards);
+            // the form and how to handle it
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid())
+            {
+                // number of cards reviewed +1
+                $userCount->setCount($count + 1);
+
+                // get card posted
+                $card = $repoCard->find($request->get('card-id'));
+
+                // set the day of future review
+                $date = new \DateTime();
+                $card->setDatePublication($date->modify('+ 1 day'));
+
+                $manager->persist($card);
+                $manager->flush();
+
+                return $this->redirectToRoute('home');
+            }   
         }
 
         return $this->render('front/home.html.twig', [
             'cards' => $cards,
             'isFirst' => true,
             'count' => $count,
-            'due' => $due
+            'due' => $due,
+            'formCard' => $form->createView()
         ]);
     }
 
