@@ -19,6 +19,16 @@ class DailyCountRepository extends ServiceEntityRepository
         parent::__construct($registry, DailyCount::class);
     }
 
+    public function resetCount()
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = "UPDATE daily_count SET count = 0";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+    }
+
     // /**
     //  * @return DailyCount[] Returns an array of DailyCount objects
     //  */

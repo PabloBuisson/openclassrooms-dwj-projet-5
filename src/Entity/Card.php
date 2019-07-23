@@ -41,7 +41,7 @@ class Card
     /**
      * @ORM\Column(type="integer")
      */
-    private $step = 1;
+    private $step = 0;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Tag", mappedBy="cards", fetch="EAGER")

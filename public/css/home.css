@@ -27,7 +27,11 @@
     padding: 2px 8px 2px 8px;
 }
 
-[id^=form-card-] .form-group {
+#form-card .form-group {
     display: inline-block;
     margin-left: 20px;
+}
+
+#verso-container {
+    display: none;
 }

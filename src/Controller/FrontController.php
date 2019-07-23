@@ -10,14 +10,15 @@ use App\Repository\DailyCountRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityManagerInterface;
+use App\Service\DateGenerator;
 
 class FrontController extends AbstractController
 {
     /**
      * @Route("/", name="home")
      */
-    public function home(Card $card = null, CardRepository $repoCard, UserRepository $repoUser, DailyCountRepository $repoCount, Request $request, ObjectManager $manager)
+    public function home(Card $card = null, CardRepository $repoCard, UserRepository $repoUser, DailyCountRepository $repoCount, Request $request, EntityManagerInterface $manager, DateGenerator $dateGenerator)
     {
         // dull data for anonymous user
         $cards = null;
@@ -27,8 +28,7 @@ class FrontController extends AbstractController
         $form = $this->createForm(CardType::class, $card);
 
         // if the user is connected
-        if ($this->getUser())
-        {
+        if ($this->getUser()) {
             // current user id
             $user = $this->getUser()->getId();
 
@@ -51,8 +51,7 @@ class FrontController extends AbstractController
             // the form and how to handle it
             $form->handleRequest($request);
 
-            if ($form->isSubmitted() && $form->isValid())
-            {
+            if ($form->isSubmitted() && $form->isValid()) {
                 // number of cards reviewed +1
                 $userCount->setCount($count + 1);
 
@@ -61,7 +60,9 @@ class FrontController extends AbstractController
 
                 // set the day of future review
                 $date = new \DateTime();
-                $card->setDatePublication($date->modify('+ 1 day'));
+                $answer = $form->getClickedButton()->getName();
+                $newDate = $dateGenerator->getDate($card, $answer);
+                $card->setDatePublication($date->modify('+' . $newDate . 'day'));
 
                 $manager->persist($card);
                 $manager->flush();
