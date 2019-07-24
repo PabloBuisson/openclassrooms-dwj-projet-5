@@ -46,12 +46,9 @@ class TagController extends BaseAdminController
     public function createListQueryBuilder($entityClass, $sortDirection, $sortField = null, $dqlFilter = null)
     {
         // add dqlFilter for the list of Tag of the logged user
-        if (null === $dqlFilter) 
-        {
+        if (null === $dqlFilter) {
             $dqlFilter = sprintf('entity.id = %s', $this->getUser()->getId());
-        } 
-        else 
-        {
+        } else {
             $dqlFilter = sprintf('entity.id = %s', $this->getUser()->getId());
         }
 

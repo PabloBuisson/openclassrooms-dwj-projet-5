@@ -68,6 +68,11 @@ class User implements UserInterface
      */
     private $tags;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\LastConnection", mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $lastConnection;
+
     public function __construct()
     {
         $this->cards = new ArrayCollection();
@@ -261,5 +266,23 @@ class User implements UserInterface
     public function __toString()
     {
         return $this->pseudo;
+    }
+
+    public function getLastConnection(): ?LastConnection
+    {
+        return $this->lastConnection;
+    }
+
+    public function setLastConnection(?LastConnection $lastConnection): self
+    {
+        $this->lastConnection = $lastConnection;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newUser = $lastConnection === null ? null : $this;
+        if ($newUser !== $lastConnection->getUser()) {
+            $lastConnection->setUser($newUser);
+        }
+
+        return $this;
     }
 }

@@ -22,8 +22,7 @@ class CardFixtures extends Fixture
         $manager->persist($user);
 
         // création de 3 tags fakés, puis de 5 cards reliées
-        for ($j = 1; $j <= 3; $j++)
-        { 
+        for ($j = 1; $j <= 3; $j++) { 
             $tag = new Tag();
             $tag->setName($faker->word)
                 ->setUser($user);

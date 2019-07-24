@@ -56,13 +56,10 @@ class AdminController extends BaseAdminController
     public function createListQueryBuilder($entityClass, $sortDirection, $sortField = null, $dqlFilter = null)
     {
         // add dqlFilter that display elements of the logged user (elements of User had to be fetch in the new controller UserController)
-        if (null === $dqlFilter)
-        {
+        if (null === $dqlFilter) {
             $dqlFilter = sprintf('entity.user = %s', $this->getUser()->getId());
             //$dqlFilter .= sprintf(' AND entity.user_id = %s', $this->getUser()->getId());
-        } 
-        else 
-        {
+        } else {
             $dqlFilter .= sprintf(' AND entity.user = %s', $this->getUser()->getId());
             //$dqlFilter .= sprintf(' AND entity.user_id = %s', $this->getUser()->getId());
         }
@@ -82,12 +79,9 @@ class AdminController extends BaseAdminController
         // the property to search
         $name = null;
         
-        if (($this->entity['class']) == 'App\Entity\Tag')
-        {
+        if (($this->entity['class']) == 'App\Entity\Tag') {
             $name = 'name';
-        }
-        elseif (($this->entity['class']) == 'App\Entity\Card')
-        {
+        } elseif (($this->entity['class']) == 'App\Entity\Card') {
             $name = 'recto';
         }
 
@@ -101,13 +95,11 @@ class AdminController extends BaseAdminController
             ->setParameter('query', '%' . strtolower($searchQuery) . '%')
             ;
             
-        if (!empty($dqlFilter))
-        {
+        if (!empty($dqlFilter)) {
             $queryBuilder->andWhere($dqlFilter);
         }
 
-        if (null !== $sortField)
-        {
+        if (null !== $sortField) {
             $queryBuilder->orderBy('entity.' . $sortField, $sortDirection ?: 'DESC');
         }
 
@@ -154,10 +146,8 @@ class AdminController extends BaseAdminController
         $user = $this->getUser()->getId();
 
         // for each property, change the one named tags
-        foreach ($fields as $property => $content) 
-        {
-            if ($property == 'tags')
-            {
+        foreach ($fields as $property => $content) {
+            if ($property == 'tags') {
                 $options = [
                     'attr' => ['data-widget' => 'select2'],
                     'placeholder' => 'label.form.empty_value',
@@ -170,8 +160,7 @@ class AdminController extends BaseAdminController
                     'class' => 'App\Entity\Tag'
                 ];
 
-                $options['query_builder'] = function (EntityRepository $repo)
-                {
+                $options['query_builder'] = function (EntityRepository $repo) {
                     // query on the Table class with the current user
                     $query = $repo->createQueryBuilder('t');
 

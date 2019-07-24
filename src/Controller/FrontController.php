@@ -64,6 +64,13 @@ class FrontController extends AbstractController
                 $newDate = $dateGenerator->getDate($card, $answer);
                 $card->setDatePublication($date->modify('+' . $newDate . 'day'));
 
+                // increase step (step +1)
+                if ($answer == 'reset') {
+                    $card->setStep(0);
+                } else {
+                    $card->setStep(($card->getStep()) + 1);
+                }
+                
                 $manager->persist($card);
                 $manager->flush();
 

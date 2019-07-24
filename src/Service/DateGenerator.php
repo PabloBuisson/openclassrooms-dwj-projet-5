@@ -6,10 +6,10 @@ use App\Entity\Card;
 
 class DateGenerator
 {
-    CONST RESET = 0;
-    CONST HARD = 1.2;
-    CONST MEDIUM = 2.4;
-    CONST EASY = 4;
+    const RESET = 0;
+    const HARD = 1.2;
+    const MEDIUM = 2.4;
+    const EASY = 4;
 
     public function getDate(Card $card, $answer)
     {
@@ -21,6 +21,7 @@ class DateGenerator
 
         $date = $const * $step;
         
+        // return a round date, i.e. a number of days
         return round($date); 
     }
 }
