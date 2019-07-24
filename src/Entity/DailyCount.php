@@ -17,7 +17,7 @@ class DailyCount
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\User", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\User", inversedBy="dailyCount", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;

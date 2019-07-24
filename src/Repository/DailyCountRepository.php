@@ -2,9 +2,10 @@
 
 namespace App\Repository;
 
+use App\Entity\User;
 use App\Entity\DailyCount;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method DailyCount|null find($id, $lockMode = null, $lockVersion = null)
@@ -19,11 +20,13 @@ class DailyCountRepository extends ServiceEntityRepository
         parent::__construct($registry, DailyCount::class);
     }
 
-    public function resetCount()
+    public function resetCount(User $user)
     {
         $conn = $this->getEntityManager()->getConnection();
 
-        $sql = "UPDATE daily_count SET count = 0";
+        $id = $user->getId();
+
+        $sql = "UPDATE daily_count SET count = 0 WHERE user_id = $id";
 
         $stmt = $conn->prepare($sql);
         $stmt->execute();

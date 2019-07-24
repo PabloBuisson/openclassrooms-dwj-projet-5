@@ -24,7 +24,7 @@ class LastConnection
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $lastConnection;
+    private $updatedAt;
 
     public function getId(): ?int
     {
@@ -43,14 +43,14 @@ class LastConnection
         return $this;
     }
 
-    public function getLastConnection(): ?\DateTimeInterface
+    public function getUpdatedAt(): ?\DateTimeInterface
     {
-        return $this->lastConnection;
+        return $this->updatedAt;
     }
 
-    public function setLastConnection(\DateTimeInterface $lastConnection): self
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $this->lastConnection = $lastConnection;
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }

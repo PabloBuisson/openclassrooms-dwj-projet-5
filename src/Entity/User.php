@@ -73,6 +73,11 @@ class User implements UserInterface
      */
     private $lastConnection;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\DailyCount", mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $dailyCount;
+
     public function __construct()
     {
         $this->cards = new ArrayCollection();
@@ -281,6 +286,24 @@ class User implements UserInterface
         $newUser = $lastConnection === null ? null : $this;
         if ($newUser !== $lastConnection->getUser()) {
             $lastConnection->setUser($newUser);
+        }
+
+        return $this;
+    }
+
+    public function getDailyCount(): ?DailyCount
+    {
+        return $this->dailyCount;
+    }
+
+    public function setDailyCount(?DailyCount $dailyCount): self
+    {
+        $this->dailyCount = $dailyCount;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newUser = $dailyCount === null ? null : $this;
+        if ($newUser !== $dailyCount->getUser()) {
+            $dailyCount->setUser($newUser);
         }
 
         return $this;

@@ -6,18 +6,22 @@ use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\HttpKernel\Event\ControllerEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use App\Repository\UserRepository;
+use App\Repository\DailyCountRepository;
+use Doctrine\ORM\EntityManagerInterface;
 
 class ControllerSubscriber implements EventSubscriberInterface
 {
     private $security;
     private $userRepo;
+    private $manager;
 
-    public function __construct(Security $security, UserRepository $userRepo)
+    public function __construct(Security $security, UserRepository $userRepo, EntityManagerInterface $manager)
     {
         // Avoid calling getUser() in the constructor: auth may not
         // be complete yet. Instead, store the entire Security object.
         $this->security = $security;
         $this->userRepo = $userRepo;
+        $this->manager = $manager;
     }
 
     public static function getSubscribedEvents()
@@ -43,10 +47,22 @@ class ControllerSubscriber implements EventSubscriberInterface
             $currentUser = $this->userRepo->find($user);
             // entity LastConnection related to the current user
             $userConnection = $currentUser->getLastConnection();
-            dump($userConnection);
-            $lastConnection = $userConnection->getLastConnection();
-            dump($lastConnection);
-            // $lastDay = date_format($lastConnection, 'd-m-Y');
+            $lastConnection = $userConnection->getUpdatedAt();
+            $lastDay = $lastConnection->format('d-m-Y'); // ex. 27-07-2019
+
+            $date = new \DateTime();
+            $today = $date->format('d-m-Y');
+
+            // if current user visit the homepage for the first time of the day
+            if ($lastDay !== $today) {
+                // the number of reviewed cards is set to 0
+                $userCount = $currentUser->getDailyCount();
+                $userCount->setCount(0);
+                // the last day of connection is set to today
+                $userConnection->setUpdatedAt(new \DateTime);
+                
+                $this->manager->flush();
+            }
         }
     }
 }

@@ -18,7 +18,7 @@ class FrontController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function home(Card $card = null, CardRepository $repoCard, UserRepository $repoUser, DailyCountRepository $repoCount, Request $request, EntityManagerInterface $manager, DateGenerator $dateGenerator)
+    public function home(Card $card = null, CardRepository $repoCard, UserRepository $repoUser, Request $request, EntityManagerInterface $manager, DateGenerator $dateGenerator)
     {
         // dull data for anonymous user
         $cards = null;
@@ -39,9 +39,7 @@ class FrontController extends AbstractController
             $userLimit = $userParam->getDailyLimit();
 
             // cards due = (limit of daily cards - amount of cards already done today)
-            $userCount = $repoCount->findOneBy([
-                'user' => $user
-            ]);
+            $userCount = $userParam->getDailyCount();
             $count = $userCount->getCount();
             $limit = ($userLimit - $count);
 
