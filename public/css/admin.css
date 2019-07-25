@@ -17,6 +17,14 @@ body {
     margin-bottom: 20px;
 }
 
+#header-logo a:hover, #header-logo a:active, #header-logo a:focus {
+    text-shadow: 2px 2px 2px rgb(195, 116, 41);
+}
+
+#menu-avatar:hover .user-avatar, #menu-avatar:hover .user-name, #menu-avatar:active .user-avatar, #menu-avatar:active .user-name, #menu-avatar:focus .user-avatar, #menu-avatar:focus .user-name {
+    text-shadow: 2px 2px 2px rgb(195, 116, 41);
+}
+
 .nav-front {
     color: rgba(255, 255, 255, 0.8);
     font-size: 16px;
@@ -24,6 +32,7 @@ body {
 
 .nav-front:hover, .nav-front:active, .nav.front:focus {
     color: white;
+    text-shadow: 2px 2px 2px rgb(195, 116, 41);
 }
 
 a.user-action-logout {

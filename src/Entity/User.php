@@ -13,7 +13,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(
  *      "email",
- *      message="Ce mail est déjà pris !"
+ *      message="Hum, ce mail est déjà pris !"
  * )
  */
 class User implements UserInterface
@@ -27,7 +27,12 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Assert\Email
+     * @Assert\NotBlank
+     * @Assert\Email(message="Le mail renseigné n'est pas un mail valide")
+     * @Assert\Length(
+     *      max = 254,
+     *      maxMessage = "Hum, votre mail est bien trop long !"
+     * )
      */
     private $email;
 
@@ -39,17 +44,32 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-     * @Assert\Length(min=10, minMessage="Votre mot de passe doit faire plus de 10 caractères")
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      min = 10, 
+     *      max = 254,
+     *      minMessage = "Votre mot de passe doit faire plus de 10 caractères",
+     *      maxMessage = "Outch ! Votre mot de passe doit être inférieur à 254 caractères"
+     * )
      */
     private $password;
 
     /**
-     * @Assert\EqualTo(propertyPath="password", message="Veuillez confirmer le même mot de passe")
+     * @Assert\NotBlank
+     * @Assert\EqualTo(
+     *      propertyPath = "password",
+     *      message = "Veuillez confirmer le même mot de passe"
+     * )
      */
     private $confirm_password;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      max = 254,
+     *      maxMessage = "Outch ! Votre pseudo doit être inférieur à 254 caractères"
+     * )
      */
     private $pseudo;
 

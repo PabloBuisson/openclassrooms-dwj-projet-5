@@ -3,18 +3,14 @@ easy_admin:
         User:
             class: App\Entity\User
             controller: App\Controller\UserController
-            #display_name: true
-            #name_property_path: 'pseudo'
-            #display_avatar: false
             label: 'Paramètres'
             disabled_actions: ['new', 'search']
             form:
                 fields: 
                     - { property: 'dailyLimit', label: 'Limite de révisions quotidiennes' }
                     - { property: 'pseudo', label: 'Pseudo' }
-                    - { property: 'password', label: 'Password' }
                 actions:
-                    - { name : 'delete', icon: 'trash', label: 'Supprimer mon compte', css_class: 'btn btn-danger' }
+                    - { name : '-delete', icon: 'trash', label: 'Supprimer mon compte', css_class: 'btn btn-danger' }
             list:
                 fields: [{property: 'pseudo', label: 'Pseudo'}, {property: 'cards', label: 'Nb. cartes'}, {property: 'tags', label: 'Nb. tags'}, {property: 'dailyLimit', label: 'Nb. révisions quotidiennes'}]
                 title: "Vos paramètres"

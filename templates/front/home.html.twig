@@ -11,7 +11,16 @@
 
         <h1>Bienvenue !</h1>
 
+        <p>Blablabla</p>
+
     {% else %}
+
+    {% if cards is empty and count == 0 %}
+        <p>Pas de cartes aujourd'hui !</p>
+    {% elseif cards is empty and count > 0 %}
+        <p>Plus de cartes à travailler, bravo !</p>
+    {% endif %}
+    
             
         <div class="row mt-5">
             {% for card in cards %}

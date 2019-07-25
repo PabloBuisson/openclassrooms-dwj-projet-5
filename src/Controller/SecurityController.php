@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\DailyCount;
+use App\Entity\LastConnection;
 use App\Form\RegistrationType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -20,8 +21,6 @@ class SecurityController extends AbstractController
      */
     public function registration(Request $request, ObjectManager $manager, UserPasswordEncoderInterface $encoder)
     {
-        dump($request);
-
         // the object bound to the form
         $user = new User();
         
@@ -38,6 +37,12 @@ class SecurityController extends AbstractController
             $userCount = new DailyCount();
             $userCount->setUser($user);
             $manager->persist($userCount);
+
+            // add last connection to User parameters
+            $userConnection = new LastConnection();
+            $userConnection->setUser($user);
+            $userConnection->setUpdatedAt(new \DateTime);
+            $manager->persist($userConnection);
 
             $manager->persist($user);
             $manager->flush();
