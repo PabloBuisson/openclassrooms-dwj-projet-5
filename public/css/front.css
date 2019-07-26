@@ -31,3 +31,26 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .navbar-brand:hover, .nav-brand:active, .nav-brand:focus {
     text-shadow: 2px 2px 2px rgb(195, 116, 41);
 }
+
+/* ---------- FOOTER ---------- */
+
+footer {
+    background-color: rgb(206, 206, 206);
+    margin-top: 100px;
+    padding: 40px 0 40px 0;
+}
+
+footer a {
+    color: grey !important;
+}
+
+footer .logo {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+footer .logo-img {
+    width: 28px;
+    height: 28px;
+    margin: -2px 3px 0 -7px;
+}

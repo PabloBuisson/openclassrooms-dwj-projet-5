@@ -60,9 +60,36 @@
                 </div>
             </nav>
 
-            <div class="container main-section">
-                {% block body %}{% endblock %}  
-            </div>
+            {% block body %}{% endblock %}
+
+        
+
+            <footer>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-8 offset-2 text-center col-md offset-md-0 text-md-left">
+                            <h5>Plan du site</h5>
+                            <div>
+                                <a href="{{ path('home') }}">Accueil</a><br />
+                                <a href="{{ path('presentation') }}">Présentation</a><br />
+                                <a href="{{ path('easyadmin', {entity: 'Card', action: 'new'}) }}">Ajouter</a><br />
+                            </div>
+                        </div>
+                        <div class="col-8 offset-2 text-center col-md offset-md-0 text-md-left">
+                            <h5>Me retrouver sur</h5>
+                            <div>
+                                <a href="https://github.com/PabloBuisson/openclassrooms-dwj-projet-5" title="Repo GitHub du projet"><span class="fa fa-github-square logo"></span>GitHub (repo du projet)</a><br />
+                                <a href="https://www.facebook.com/pabloush.page/" title="Page Facebook du développeur du site"><span class="fa fa-facebook-square logo"></span>Facebook</a><br />
+                                <a href="https://twitter.com/pablobuisson" title="Compte Twitter du développeur du site"><span class="fa fa-twitter-square logo"></span>Twitter</a><br />
+                                <a href="https://www.senscritique.com/Pablo_Buisson" title="Profil Senscritique du développeur du site"><img class="logo-img" src="{{ asset('img/model-square-brands.svg') }}" alt="Logo de Sencritique">Senscritique</a>
+                            </div>
+                        </div>
+                        <div class="col-8 offset-2 text-center col-md offset-md-0 text-md left">
+                            <h5>Admin</h5>
+                        </div>
+                    </div>
+                </div>
+            </footer>
 
         </div>
         

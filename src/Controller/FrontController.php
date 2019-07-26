@@ -78,7 +78,6 @@ class FrontController extends AbstractController
 
         return $this->render('front/home.html.twig', [
             'cards' => $cards,
-            'isFirst' => true,
             'count' => $count,
             'due' => $due,
             'formCard' => $form->createView()

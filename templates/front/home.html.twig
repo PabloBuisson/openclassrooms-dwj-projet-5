@@ -7,6 +7,8 @@
 
 {% block body %}
 
+    <div class="container main-section">
+
     {% if not app.user %}
 
         <h1>Bienvenue !</h1>
@@ -25,23 +27,23 @@
         <div class="row mt-5">
             {% for card in cards %}
                 {% if loop.first %}
-                    <div id="card-container" class="col-8 offset-2 {% if isFirst %}active{% endif %}">
+                    <div id="card-container" class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
                         <article class="card-user text-center p-5">
                             <div class="row">
-                                <div class="col-2 offset-10 mb-3 mt-n3 count-user"><span class="user-count">{{ due }}</span><span class="fa fa-clock-o d-inline-block ml-1" aria-hidden="true"></span> | <span class="user-limit">{{ count }}</span><span class="fa fa-check d-inline-block ml-1" aria-hidden="true"></span></div>
-                            </div>
-                            <h3>{{ card.recto }}</h3>
-                            <div class="tag-container"> 
+                                <div class="order-2 col-12 order-md-1 col-md text-center text-md-left mb-3 mt-2 mt-md-n3">
                                 {% for tag in card.tags %}
-                                    <div class="d-inline-block tag-user">{{ tag.name }}</div>
+                                    <div class="d-inline-block tag-user">{{ tag.name | upper }}</div>
                                 {% endfor %}
+                                </div>
+                                <div class="order-1 col-12 order-md-2 col-md text-center text-md-right mb-3 mt-n3 count-user"><span class="user-count">{{ due }}</span><span class="fa fa-clock-o d-inline-block ml-1" aria-hidden="true"></span> | <span class="user-limit">{{ count }}</span><span class="fa fa-check d-inline-block ml-1" aria-hidden="true"></span></div>
                             </div>
-                            <button type="button" id="btn-answer" class="btn btn-info mt-5">Voir la réponse</button>
+                            <p class="card-content mt-5">{{ card.recto }}</p>
+                            <button type="button" id="btn-answer" class="btn btn-info mt-1 mb-5">Voir la réponse</button>
                             
                             <div id="verso-container">
                                 <hr>
-                                <div>{{ card.verso }}</div>
-                                <div class="card-form mt-5">
+                                <p class="card-content">{{ card.verso }}</p>
+                                <div class="card-form mt-5 position-relative">
                                     {{ form_start(formCard, {'attr': {'id': 'form-card' }}) }}
 
                                     <input type="hidden" name="card-id" value="{{ card.id }}">
@@ -51,15 +53,16 @@
                             </div>
                         </article>
                     </div>
-                    {% set isFirst = false %} 
                 {% endif %}
             {% endfor %}
         </div>
 
     {% endif %}
 
-    {% block javascripts %}
-        <script src="{{ asset('js/home.js') }}"></script>
-    {% endblock %}
+    </div>
 
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/home.js') }}"></script>
 {% endblock %}

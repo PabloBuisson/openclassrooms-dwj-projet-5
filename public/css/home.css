@@ -2,10 +2,10 @@
 
 /* ---------- SECTION CARD ---------- */
 
-.carousel-inner {
-    position: relative;
-    width: 100%;
-    overflow: visible !important;
+#card-container .card-content {
+    color: grey;
+    font-size: 1.9rem;
+    word-wrap: break-word;
 }
 
 .count-user {
@@ -14,9 +14,9 @@
 }
 
 .card-user {
-    box-shadow: 5px 5px 15px grey !important;
     border: 2px solid #EC8B32;
     border-radius: 5px;
+    box-shadow: 5px 5px 15px grey !important;
 }
 
 .tag-user {
@@ -29,7 +29,8 @@
 
 #form-card .form-group {
     display: inline-block;
-    margin-left: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 #verso-container {

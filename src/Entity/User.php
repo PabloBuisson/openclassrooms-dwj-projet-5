@@ -28,7 +28,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      * @Assert\NotBlank
-     * @Assert\Email(message="Le mail renseigné n'est pas un mail valide")
+     * @Assert\Email(message = "Le mail renseigné n'est pas un mail valide")
      * @Assert\Length(
      *      max = 254,
      *      maxMessage = "Hum, votre mail est bien trop long !"
