@@ -31,7 +31,7 @@
                                 <a class="nav-link d-inline nav-front" href="{{ path('home') }}"><span class="fa fa-home d-inline-block mr-1" aria-hidden="true"></span> Accueil <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link d-inline nav-front" href="{{ path('presentation') }}"><span class="fa fa-lightbulb-o d-inline-block mr-1" aria-hidden="true"></span> Présentation</a>
+                                <a class="nav-link d-inline nav-front" href="{{ path('presentation') }}"><span class="fa fa-lightbulb-o d-inline-block mr-2 mr-md-1" aria-hidden="true"></span> Présentation</a>
                             </li>
                         {% if app.user %}
                             <li class="nav-item">
@@ -42,10 +42,10 @@
                         <ul class="navbar-nav ml-auto">
                         {% if app.user %}
                             <li class="nav-item">
-                                <a class="nav-link nav-front" href="{{ path('easyadmin')}}"><span class="fa fa-cog d-inline-block mr-1" aria-hidden="true"></span> Admin</a>
+                                <a class="nav-link d-inline d-md-inline-block nav-front" href="{{ path('easyadmin')}}"><span class="fa fa-cog d-inline-block mr-1" aria-hidden="true"></span> Admin</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link nav-front" href="{{ path('security_logout')}}">Déconnexion</a>
+                                <a class="nav-link d-inline d-md-inline-block nav-front" href="{{ path('security_logout')}}"><span class="fa fa-power-off mr-2 d-md-none" aria-hidden="true"></span>Déconnexion</a>
                             </li>
                         {% else %}
                             <li class="nav-item">
@@ -67,25 +67,37 @@
             <footer>
                 <div class="container">
                     <div class="row">
-                        <div class="col-8 offset-2 text-center col-md offset-md-0 text-md-left">
+                        <div class="col-8 offset-2 text-center col-md offset-md-0 text-md-left mb-5">
                             <h5>Plan du site</h5>
                             <div>
                                 <a href="{{ path('home') }}">Accueil</a><br />
                                 <a href="{{ path('presentation') }}">Présentation</a><br />
+                            {% if app.user %}
                                 <a href="{{ path('easyadmin', {entity: 'Card', action: 'new'}) }}">Ajouter</a><br />
+                                <a href="{{ path('easyadmin')}}">Admin</a>
+                            {% endif %}
                             </div>
                         </div>
-                        <div class="col-8 offset-2 text-center col-md offset-md-0 text-md-left">
+                        <div class="col-8 offset-2 text-center col-md offset-md-0 text-md-left mb-5">
                             <h5>Me retrouver sur</h5>
                             <div>
-                                <a href="https://github.com/PabloBuisson/openclassrooms-dwj-projet-5" title="Repo GitHub du projet"><span class="fa fa-github-square logo"></span>GitHub (repo du projet)</a><br />
-                                <a href="https://www.facebook.com/pabloush.page/" title="Page Facebook du développeur du site"><span class="fa fa-facebook-square logo"></span>Facebook</a><br />
-                                <a href="https://twitter.com/pablobuisson" title="Compte Twitter du développeur du site"><span class="fa fa-twitter-square logo"></span>Twitter</a><br />
-                                <a href="https://www.senscritique.com/Pablo_Buisson" title="Profil Senscritique du développeur du site"><img class="logo-img" src="{{ asset('img/model-square-brands.svg') }}" alt="Logo de Sencritique">Senscritique</a>
+                                <a href="https://github.com/PabloBuisson/openclassrooms-dwj-projet-5" title="Repo GitHub du projet"><span class="fa fa-github-square logo d-block d-md-inline-block mt-2 mt-md-0"></span>GitHub (projet)</a><br />
+                                <a href="https://www.facebook.com/pabloush.page/" title="Page Facebook du développeur du site"><span class="fa fa-facebook-square logo d-block d-md-inline-block mt-2 mt-md-0"></span>Facebook</a><br />
+                                <a href="https://twitter.com/pablobuisson" title="Compte Twitter du développeur du site"><span class="fa fa-twitter-square logo d-block d-md-inline-block mt-2 mt-md-0"></span>Twitter</a><br />
+                                <a href="https://www.senscritique.com/Pablo_Buisson" title="Profil Senscritique du développeur du site"><span class="d-block d-md-inline-block mt-2 mt-md-0"><img class="logo-img" src="{{ asset('img/model-square-brands.svg') }}" alt="Logo de Sencritique"></span>Senscritique</a>
                             </div>
                         </div>
-                        <div class="col-8 offset-2 text-center col-md offset-md-0 text-md left">
+                        <div class="col-8 offset-2 text-center col-md offset-md-0 text-md left mb-5">
                             <h5>Admin</h5>
+                            <div>
+                            {% if app.user %}
+                                <a href="{{ path('easyadmin')}}">Tableau de Bord</a><br />
+                                <a href="{{ path('security_logout')}}">Déconnexion</a>
+                            {% else %}
+                                <a href="{{ path('security_registration')}}">Inscription</a><br />
+                                <a href="{{ path('security_login')}}">Connexion</a>
+                            {% endif %}
+                            </div>
                         </div>
                     </div>
                 </div>
