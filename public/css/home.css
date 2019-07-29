@@ -2,6 +2,30 @@
 
 /* ---------- SECTION CARD ---------- */
 
+.message-home {
+    color: grey;
+}
+
+.message-home a {
+    color: #EC8B32;
+}
+
+.message-home a:hover, .message-home a:active, .message-home a:focus {
+    color: #EC8B32;
+}
+
+.message-home .message-text {
+    font-size: 1.5rem;
+}
+
+.message-home .message-reminder {
+    font-size: 1.2rem;
+}
+
+.message-home .message-icon {
+    font-size: 4rem;
+}
+
 #card-container .card-content {
     color: grey;
     font-size: 1.9rem;

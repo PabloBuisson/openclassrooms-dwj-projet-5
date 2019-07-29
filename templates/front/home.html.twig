@@ -18,9 +18,25 @@
     {% else %}
 
     {% if cards is empty and count == 0 %}
-        <p>Pas de cartes aujourd'hui !</p>
+        <div class="row">
+            <div class="col-10 offset-1 col-md-8 offset-md-2 text-center message-home mt-5">
+                <span class="fa fa-frown-o message-icon mt-5" aria-hidden="true"></span>
+                <p class="message-text mt-3">Pas de cartes prévues aujourd'hui !</p>
+                {% if deck is empty %}
+                    <p class="message-reminder mt-3">Oups, vous n'avez aucune carte à réviser. Profitez-en pour créer vos <a href="{{ path('easyadmin', {entity: 'Card', action: 'new'}) }}">premières cartes</a> !</p>
+                {% else %}
+                    <p class="message-reminder mt-3">Oups, vous n'avez aucune carte à réviser. Profitez-en pour créer de <a href="{{ path('easyadmin', {entity: 'Card', action: 'new'}) }}">nouvelles cartes</a> !</p>
+                {% endif %}
+            </div>
+        </div>
     {% elseif cards is empty and count > 0 %}
-        <p>Plus de cartes à travailler, bravo !</p>
+        <div class="row">
+            <div class="col-10 offset-1 col-md-8 offset-md-2 text-center message-home mt-5">
+                <span class="fa fa-check-circle message-icon mt-5" aria-hidden="true"></span>
+                <p class="message-text mt-3">Plus de cartes à réviser, bravo !</p>
+                <p class="message-reminder mt-3">N'oubliez pas que vous pouvez augmenter votre <a href="{{ path('easyadmin', {entity: 'User', action: 'list'}) }}">limite quotidienne</a> ou créer de <a href="{{ path('easyadmin', {entity: 'Card', action: 'new'}) }}">nouvelles cartes</a> !</p>
+            </div>
+        </div>
     {% endif %}
     
             

@@ -124,6 +124,11 @@ class Card
         return $this;
     }
 
+    public function increaseStep()
+    {
+        return $this->step += 1;
+    }
+
     /**
      * @return Collection|Tag[]
      */

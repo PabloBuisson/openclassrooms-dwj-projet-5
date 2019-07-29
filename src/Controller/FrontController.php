@@ -6,7 +6,6 @@ use App\Entity\Card;
 use App\Form\CardType;
 use App\Repository\CardRepository;
 use App\Repository\UserRepository;
-use App\Repository\DailyCountRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -24,6 +23,7 @@ class FrontController extends AbstractController
         $cards = null;
         $count = null;
         $due = null;
+        $deck = null;
 
         $form = $this->createForm(CardType::class, $card);
 
@@ -34,6 +34,9 @@ class FrontController extends AbstractController
 
             // object of the current user
             $userParam = $repoUser->find($user);
+
+            // is the user a new user ? i.e. is there at least one card in the deck ?
+            $deck = $userParam->getCards();
 
             // limit of daily cards, defined by user
             $userLimit = $userParam->getDailyLimit();
@@ -66,7 +69,7 @@ class FrontController extends AbstractController
                 if ($answer == 'reset') {
                     $card->setStep(0);
                 } else {
-                    $card->setStep(($card->getStep()) + 1);
+                    $card->increaseStep();
                 }
                 
                 $manager->persist($card);
@@ -80,6 +83,7 @@ class FrontController extends AbstractController
             'cards' => $cards,
             'count' => $count,
             'due' => $due,
+            'deck' => $deck,
             'formCard' => $form->createView()
         ]);
     }

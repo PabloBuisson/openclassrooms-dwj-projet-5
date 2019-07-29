@@ -6,7 +6,6 @@ use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\HttpKernel\Event\ControllerEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use App\Repository\UserRepository;
-use App\Repository\DailyCountRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
 class ControllerSubscriber implements EventSubscriberInterface
@@ -23,7 +22,6 @@ class ControllerSubscriber implements EventSubscriberInterface
         $this->userRepo = $userRepo;
         $this->manager = $manager;
     }
-
     public static function getSubscribedEvents()
     {
         // return the subscribed events, their methods and priorities
@@ -33,26 +31,21 @@ class ControllerSubscriber implements EventSubscriberInterface
             ],
         ];
     }
-
     public function processHomepage(ControllerEvent $event)
     {
         // get controller and route name
-        $controller = $event->getController();
-
+        $route = $event->getRequest()->get('_route');
         // get current user on the page
         $user = $this->security->getUser();
-
         // check if the user is connected, currently on the homepage and check his last connexion
-        if ($user && $controller[1] == 'home') {
+        if ($user && $route == 'home') {
             $currentUser = $this->userRepo->find($user);
             // entity LastConnection related to the current user
             $userConnection = $currentUser->getLastConnection();
             $lastConnection = $userConnection->getUpdatedAt();
             $lastDay = $lastConnection->format('d-m-Y'); // ex. 27-07-2019
-
             $date = new \DateTime();
             $today = $date->format('d-m-Y');
-
             // if current user visit the homepage for the first time of the day
             if ($lastDay !== $today) {
                 // the number of reviewed cards is set to 0
