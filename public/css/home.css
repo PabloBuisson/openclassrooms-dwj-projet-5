@@ -1,6 +1,14 @@
 
+/* ---------- SECTION PRESENTATION/CUSTOMIZED MESSAGE ---------- */
 
-/* ---------- SECTION CARD ---------- */
+.homepage-presentation {
+    color: grey;
+}
+
+.homepage-presentation .message-icon {
+    font-size: 3rem;
+    color: #EC8B32;
+}
 
 .message-home {
     color: grey;
@@ -25,6 +33,8 @@
 .message-home .message-icon {
     font-size: 4rem;
 }
+
+/* ---------- SECTION CARD ---------- */
 
 #card-container .card-content {
     color: grey;

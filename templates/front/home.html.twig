@@ -10,11 +10,29 @@
     <div class="container main-section">
 
     {% if not app.user %}
+        <div class="row">
+            <div class="col-10 offset-1 text-center homepage-presentation mt-5">
+               <h1 class="position-relative">Bienvenue sur Flashcards, le site qui rend votre mémoire infaillible !</h1>
+                
+                <p class="mt-5 text-presentation text-justify">Vous voulez retenir toutes les capitales du monde ? Vous souhaitez parfaire vos connaissances en langues étrangères ? Vous souhaitez étoffer votre vocabulaire ? Ne cherchez plus, FlashCards est fait pour vous !</p>
 
-        <h1>Bienvenue !</h1>
-
-        <p>Blablabla</p>
-
+                <span class="fa fa-lightbulb-o message-icon mt-5" aria-hidden="true"></span>
+               <h2 class="mt-5">Apprenez facilement et rapidement grâce aux cartes mémoire</h2>
+                <p class="mt-3 text-presentation text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti, quos illo? Porro nisi laudantium laboriosam doloremque unde, cupiditate deleniti voluptatibus dignissimos. Eius itaque dignissimos exercitationem non sint aperiam doloribus, perferendis commodi maxime magni reprehenderit nostrum, rem dolore! Totam iure explicabo rerum sit? Veritatis, quam doloremque!</p>
+                
+                <span class="fa fa-user-circle-o message-icon mt-5" aria-hidden="true"></span>
+                <h2 class="mt-5">Une application personnalisée</h2>
+                <p class="mt-3 text-presentation text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti, quos illo? Porro nisi laudantium laboriosam doloremque unde, cupiditate deleniti voluptatibus dignissimos. Eius itaque dignissimos exercitationem non sint aperiam doloribus, perferendis commodi maxime magni reprehenderit nostrum, rem dolore! Totam iure explicabo rerum sit? Veritatis, quam doloremque!</p>
+                
+                <span class="fa fa-heart message-icon mt-5" aria-hidden="true"></span>
+                <h2 class="mt-5">Un fonctionnement simple et adapté à vos préférences</h2>
+                <p class="mt-3 text-presentation text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti, quos illo? Porro nisi laudantium laboriosam doloremque unde, cupiditate deleniti voluptatibus dignissimos. Eius itaque dignissimos exercitationem non sint aperiam doloribus, perferendis commodi maxime magni reprehenderit nostrum, rem dolore! Totam iure explicabo rerum sit? Veritatis, quam doloremque!</p>
+                
+                <span class="fa fa-check message-icon mt-5" aria-hidden="true"></span>
+                <h2 class="mt-5">N'attendez plus pour améliorer votre mémoire !</h2>
+                <p class="mt-3 text-presentation text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti, quos illo? Porro nisi laudantium laboriosam doloremque unde, cupiditate deleniti voluptatibus dignissimos. Eius itaque dignissimos exercitationem non sint aperiam doloribus, perferendis commodi maxime magni reprehenderit nostrum, rem dolore! Totam iure explicabo rerum sit? Veritatis, quam doloremque!</p>
+            </div>
+        </div>
     {% else %}
 
     {% if cards is empty and count == 0 %}
