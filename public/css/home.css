@@ -14,11 +14,13 @@
     color: grey;
 }
 
-.message-home a {
+.text-presentation a, .message-home a {
     color: #EC8B32;
+    text-decoration: underline;
 }
 
-.message-home a:hover, .message-home a:active, .message-home a:focus {
+.message-home a:hover, .message-home a:active, .message-home a:focus,
+.text-presentation a:hover, .text-presentation a:active, .text-presentation a:focus  {
     color: #EC8B32;
 }
 

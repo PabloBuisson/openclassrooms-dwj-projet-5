@@ -5,12 +5,12 @@ body {
 /* ---------- HEADER --------- */
 
 #background-nav {
-    height: 72px;
-    width: auto;
     background-color: #EC8B32;
-    top: 0;
-    z-index: 300000000;
+    height: 72px;
     margin-bottom: -69px;
+    min-width: 576px;
+    overflow: auto;
+    width: 100%;
 }
 
 .main-header {

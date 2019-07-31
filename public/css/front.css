@@ -39,6 +39,10 @@ h2 {
     background-image: none;
 }
 
+#bloc-page .lead {
+    font-size: 1.25rem;
+}
+
 .nav-front {
     color: white !important;
     font-size: 16px;
