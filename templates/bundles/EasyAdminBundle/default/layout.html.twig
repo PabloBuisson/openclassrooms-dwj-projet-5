@@ -8,7 +8,7 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="generator" content="EasyAdmin" />
 
-    <title>{% block page_title %}{{ block('content_title')|striptags|raw }}{% endblock %}</title>
+    <title>{% block page_title %}{{ block('content_title')|striptags|raw }} | ExtraMémoire{% endblock %}</title>
 
     {% block head_stylesheets %}
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap" rel="stylesheet">
@@ -56,7 +56,7 @@
         <header class="main-header">
             {% block header %}
             <nav class="navbar" role="navigation">
-                <button id="navigation-toggler" class="mt-n3 mr-3" type="button" aria-label="Toggle navigation">
+                <button id="navigation-toggler" class="mr-3" type="button" aria-label="Toggle navigation">
                     <i class="fa fa-fw fa-bars"></i>
                 </button>
 
@@ -71,13 +71,19 @@
                 <div class="ml-5">
                 <ul class="mr-auto list-inline d-flex">
                     <li class="nav-item">
-                        <a class="nav-link d-inline nav-front" href="{{ path('home') }}"><span class="fas fa-home d-inline-block mr-1"></span> Accueil <span class="sr-only">(current)</span></a>
+                        <a class="nav-link d-inline nav-front" href="{{ path('home') }}">
+                            <span class="fas fa-home d-inline-block mr-1"></span> Accueil
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link d-inline nav-front" href="{{ path('presentation') }}"><span class="fas fa-lightbulb d-inline-block mr-1"></span> Présentation</a>
+                        <a class="nav-link d-inline nav-front" href="{{ path('presentation') }}">
+                            <span class="fas fa-lightbulb d-inline-block mr-1"></span> Présentation
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link d-inline nav-front" href="{{ path('easyadmin', {entity: 'Card', action: 'new'}) }}"><span class="fas fa-pencil-alt d-inline-block mr-1"></span> Ajouter</a>
+                        <a class="nav-link d-inline nav-front" href="{{ path('easyadmin', {entity: 'Card', action: 'new'}) }}">
+                            <span class="fas fa-pencil-alt d-inline-block mr-1"></span> Ajouter
+                        </a>
                     </li>
                 </ul>
             </div>

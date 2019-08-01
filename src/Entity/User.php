@@ -55,7 +55,9 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @Assert\NotBlank
+     * @Assert\NotBlank(
+     *      allowNull = "true"
+     * )
      * @Assert\EqualTo(
      *      propertyPath = "password",
      *      message = "Veuillez confirmer le même mot de passe"

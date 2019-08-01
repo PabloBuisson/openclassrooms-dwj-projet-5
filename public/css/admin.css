@@ -4,6 +4,11 @@ body {
 
 /* ---------- HEADER --------- */
 
+.btn.btn-primary {
+    background-color: #EC8B32 !important;
+    border-color: #EC8B32 !important;
+}
+
 #background-nav {
     background-color: #EC8B32;
     height: 72px;
@@ -44,13 +49,26 @@ a.user-action-logout:hover {
     font-weight: bold;
 }
 
-#navigation-toggler.mt-n3 {
+.main-header #navigation-toggler {
+    margin-top: -20px;
     filter: opacity(100%);
     font-size: 24px;
 }
 
 #navigation-toggler .fa-bars {
     color: white;
+}
+
+@media all and (max-width: 630px) {
+
+    .nav-front {
+        color: rgba(255, 255, 255);
+        font-size: 16px;
+    }
+
+    .fas.fa-home, .fas.fa-lightbulb, .fas.fa-pencil-alt {
+        display: none !important;
+    }
 }
 
 /* ---------- TABLE ---------- */
@@ -72,4 +90,16 @@ a.btn.btn-link.pr-0.action-list {
 
 .form-actions .btn {
     margin-left: 25px !important;
+}
+
+.select2.select2-container.select2-container--bootstrap.select2-container--focus.select2-container--above.select2-container--open {
+    width: 100% !important;
+    max-width: 350px !important;
+}
+
+.content-footer .btn-primary:not(:disabled):not(.disabled).active,
+.content-footer .btn-primary:not(:disabled):not(.disabled):active,
+.content-footer .show>.btn-primary.dropdown-toggle {
+    background-color: #EC8B32 !important;
+    border: #EC8B32 !important;
 }

@@ -1,8 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Connexion{% endblock %}
+{% block title %}Je me connecte{% endblock %}
+
+{% block metaDescription %}
+    <meta name="description" content="Remplissez le formulaire de connexion pour
+    créer et réviser de nouvelles cartes mémoire !">
+{% endblock %}
+
+{% block ogMeta %}
+    <!-- block og:meta (facebook) : url, title and description -->
+    <meta property="og:url" content="{{ app.request.uri }}" />
+    <meta property="og:title" content="Je me connecte | ExtraMémoire" />
+    <meta property="og:description" content="Remplissez le formulaire de connexion pour
+    créer et réviser de nouvelles cartes mémoire !" />
+{% endblock %}
+
+{% block JSON %}
+    <!-- block SEO JSON -->
+    <script type='application/ld+json'>
+        {
+            "@context": "http://www.schema.org",
+            "@type": "WebSite",
+            "name": "Je me connecte | ExtraMémoire",
+            "url": "{{ app.request.uri }}"
+        }
+    </script>
+{% endblock %}
+
 {% block stylesheets %}
-<link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -18,12 +44,14 @@
 
                     <div class="form-group mt-5">
                         <label for="_username">Adresse mail</label>
-                        <input type="email" value="{{ last_username }}" name="_username" id="_username" class="form-control" placeholder="Veuillez saisir votre adresse mail" required autofocus>
+                        <input type="email" value="{{ last_username }}" name="_username" id="_username" class="form-control"
+                        placeholder="Veuillez saisir votre adresse mail" required autofocus>
                     </div>
                     
                     <div class="form-group">
                         <label for="inputPassword">Mot de passe</label>
-                        <input type="password" name="_password" id="inputPassword" class="form-control" placeholder="Veuillez saisir votre mot de passe" required>
+                        <input type="password" name="_password" id="inputPassword" class="form-control"
+                        placeholder="Veuillez saisir votre mot de passe" required>
                     </div>
                     
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">

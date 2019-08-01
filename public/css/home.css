@@ -72,3 +72,10 @@
 #verso-container {
     display: none;
 }
+
+@media all and (max-width: 576px) {
+
+    #card-container .card-content {
+        font-size: 1.6rem;
+    }
+}

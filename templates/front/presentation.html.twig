@@ -1,8 +1,34 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Apprenez durablement grâce aux flashcards{% endblock %}
+
+{% block metaDescription %}
+    <meta name="description" content="ExtraMémoire fonctionne avec des cartes mémoire,
+    des cartes de question-réponse qui favorisent la mémorisation à long terme.">
+{% endblock %}
+
+{% block ogMeta %}
+    <!-- block og:meta (facebook) : url, title and description -->
+    <meta property="og:url" content="{{ app.request.uri }}" />
+    <meta property="og:title" content="Apprenez durablement grâce aux flashcards | ExtraMémoire" />
+    <meta property="og:description" content="ExtraMémoire fonctionne avec des cartes mémoire,
+    des cartes de question-réponse qui favorisent la mémorisation à long terme." />
+{% endblock %}
+
+{% block JSON %}
+    <!-- block SEO JSON -->
+    <script type='application/ld+json'>
+        {
+            "@context": "http://www.schema.org",
+            "@type": "WebSite",
+            "name": "Apprenez durablement grâce aux flashcards | ExtraMémoire",
+            "url": "{{ app.request.uri }}"
+        }
+    </script>
+{% endblock %}
+
 {% block stylesheets %}
-<link rel="stylesheet" href="{{ asset('css/presentation.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/presentation.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -24,7 +50,7 @@
                      Son utilisation reprend celle des cartes de questions-réponses. Le but des flashcards est d’activer
                      la <strong>mémoire à long terme</strong>, en étudiant la carte à intervalles réguliers. <br />
                      Cette technique de mémorisation fait appel au <a
-                         href=" https://fr.wikipedia.org/wiki/Syst%C3%A8me_Leitner " rel="nofollow"
+                         href=" https://fr.wikipedia.org/wiki/Syst%C3%A8me_Leitner "
                          title="Explications du système Leitner">système Leitner</a>, proposé dans les années 1970 par
                      un journaliste allemand éponyme, et qui reprend de façon ludique le principe de la répétition
                      espacée. <br />
@@ -63,7 +89,8 @@
             <div class="row">
                 <div class="col-10 offset-1 text-center mt-5 mb-3">
                 <h2 class="text-white">Comment créer et réviser mes flashcards ?</h2>
-                 <p class="mt-5 mb-5 text-presentation text-justify">FlashCards reprend le fonctionnement des logiciels
+                 <p class="mt-5 mb-5 text-presentation text-justify">
+                     <span class="font-weight-bold">ExtraMémoire</span> reprend le fonctionnement des logiciels
                      utilisant les techniques de cartes mémoire virtuelles (Anki, Quizlet, Cram, et bien d’autres).
                      <br />
                      Concrètement, après vous être inscrit, vous disposerez d'un tableau de bord où vous serez libre de
@@ -132,7 +159,7 @@
                  <p class="mt-5 text-presentation text-justify">
                      Si vous êtes familier de la langue de Shakespeare, je vous recommande chaudement cet article,
                      qui énumère les 20 règles pour un apprentissage efficace :
-                     <a href=" https://www.supermemo.com/en/archives1990-2015/articles/20rules " rel="nofollow"
+                     <a href=" https://www.supermemo.com/en/archives1990-2015/articles/20rules "
                      title="20 règles pour apprendre efficacement"> Effective learning: Twenty rules of formulating knowledge</a>
                 </p>
                 <p class="text-presentation text-justify">
@@ -152,9 +179,9 @@
                         une réponse !</span> </li>
                     <li> <span>Faites des questions avec le moins de mots possibles (encore une fois, moins il y a de mots et
                         mieux c'est !)</span> </li>
-                    <li> <span>(Si possible) Ajoutez des anecdotes personnelles (ex. Sleek [EN] (comme le chat du voisin)).</span> </li>
-                    <li> <span>(Si possible) Ajoutez un contexte à vos questions (ex. Explosive [EN] (comme la première rencontre
-                        entre Donald Trump et Kim Jong-un)).</span> </li>
+                    <li> <span>(Si possible) Ajoutez des anecdotes personnelles (ex. Acariâtre (comme le voisin)).</span> </li>
+                    <li> <span>(Si possible) Ajoutez un contexte à vos questions (ex. Stupéfaction (comme les anglais qui n'ont
+                        pas vu venir le Brexit).</span> </li>
                     <li> <span>(Si possible) Employez des abréviations (encore une fois, moins il y a de mots et plus la
                         connexion est rapide !).</span> </li>
                 </ol>

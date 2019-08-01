@@ -57,6 +57,17 @@ h2 {
     text-shadow: 2px 2px 2px rgb(195, 116, 41);
 }
 
+@media all and (max-width: 576px) {
+
+    h1 {
+        font-size: 2.1rem !important;
+    }
+
+    h2 {
+        font-size: 1.8rem !important;
+    }
+}
+
 /* ---------- SECTION ---------- */
 
 .text-presentation {
@@ -77,6 +88,7 @@ footer {
 
 footer a {
     color: grey !important;
+    font-size: 16px;
 }
 
 footer .logo {
