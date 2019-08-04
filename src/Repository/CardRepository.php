@@ -54,15 +54,9 @@ class CardRepository extends ServiceEntityRepository
      */
     public function findDailyCards($today, $limit, $user): array
     {
-        // automatically knows to select Products
-        // the "p" is an alias you'll use in the rest of the query
-
         $today->setTime(23, 59, 59); // today is saved as the end of the day, to fetch all the card due today
 
         $qb = $this->createQueryBuilder('c')
-/*          ->select('c')
-            ->innerJoin('c.user', 'u', 'WITH', 'u.id = :id')
-            ->where('c.user = :id') */
             ->andWhere('c.datePublication <= :today AND c.user = :user')
             ->orderBy('RAND()') // DoctrineExtension
             ->setParameters(array('today' => $today, 'user' => $user))
@@ -70,19 +64,5 @@ class CardRepository extends ServiceEntityRepository
             ->getQuery();
 
         return $qb->execute();
-
-        // to get just one result:
-        // $product = $qb->setMaxResults(1)->getOneOrNullResult();
-
-/*         $qb = $this->createQueryBuilder('c')
-            ->select('c')
-            ->leftJoin('c.user', 'user')
-            ->where('user.id = :id')
-            ->setParameter('id', $user->getId())
-            ->andWhere('c.datePublication <= :today')
-            ->orderBy('RAND()') // DoctrineExtension
-            ->setParameter('today', $today)
-            ->setMaxResults($limit)
-            ->getQuery(); */
     }
 }

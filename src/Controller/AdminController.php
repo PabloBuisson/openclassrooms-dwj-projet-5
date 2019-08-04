@@ -4,13 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Tag;
 use App\Entity\Card;
-use App\Repository\CardRepository;
-use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use EasyCorp\Bundle\EasyAdminBundle\Event\EasyAdminEvents;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\EasyAdminController as BaseAdminController;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Doctrine\ORM\EntityRepository;
 
 class AdminController extends BaseAdminController
@@ -58,10 +54,8 @@ class AdminController extends BaseAdminController
         // add dqlFilter that display elements of the logged user (elements of User had to be fetch in the new controller UserController)
         if (null === $dqlFilter) {
             $dqlFilter = sprintf('entity.user = %s', $this->getUser()->getId());
-            //$dqlFilter .= sprintf(' AND entity.user_id = %s', $this->getUser()->getId());
         } else {
             $dqlFilter .= sprintf(' AND entity.user = %s', $this->getUser()->getId());
-            //$dqlFilter .= sprintf(' AND entity.user_id = %s', $this->getUser()->getId());
         }
         
         return $this->get('easyadmin.query_builder')->createListQueryBuilder($this->entity, $sortField, $sortDirection, $dqlFilter);
@@ -113,18 +107,11 @@ class AdminController extends BaseAdminController
         $card = new Card();
         $today = new \DateTime();
 
-/*         $tag = $this->getDoctrine()
-                    ->getRepository(Tag::class)
-                    ->find($user->getId()); */
-
         $card->setDateCreation(new \DateTime())
              ->setDatePublication($today->setTime (00, 00, 00))
              ->setUser($user);
-             //->addTag($tag);
 
         return $card;
-
-        dump($card);
     }
 
     // launched before the submission of the form that creates a new tag
@@ -143,8 +130,6 @@ class AdminController extends BaseAdminController
         // returns all the data expected for the form
         $fields = $formBuilder->all();
 
-        $user = $this->getUser()->getId();
-
         // for each property, change the one named tags
         foreach ($fields as $property => $content) {
             if ($property == 'tags') {
@@ -156,7 +141,6 @@ class AdminController extends BaseAdminController
                     'required' => false,
                     'choice_label' => 'name',
                     'multiple' => true,
-                    //'expanded' => true, // false for listing
                     'class' => 'App\Entity\Tag'
                 ];
 
@@ -173,15 +157,6 @@ class AdminController extends BaseAdminController
             }
         }
 
-        // Here I overwrite field and options
-        //$formBuilder->add('tags', CollectionType::class, ['by_reference' => false]);
-
         return $formBuilder;
     }
-
-    // launched before the submission of the form that updates a new card
-/*     public function updateCardEntity()
-    {
-
-    } */
 }
