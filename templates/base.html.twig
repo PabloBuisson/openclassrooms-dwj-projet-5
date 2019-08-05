@@ -46,13 +46,13 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link d-inline nav-front" href="{{ path('presentation') }}">
+                                <a class="nav-link d-inline nav-front" title="Présentation de l'application" href="{{ path('presentation') }}">
                                     <span class="fa fa-lightbulb-o d-inline-block mr-2 mr-md-1" aria-hidden="true"></span> Présentation
                                 </a>
                             </li>
                         {% if app.user %}
                             <li class="nav-item">
-                                <a class="nav-link d-inline nav-front" href="{{ path('easyadmin', {entity: 'Card', action: 'new'}) }}">
+                                <a class="nav-link d-inline nav-front" title="Créer une carte mémoire" href="{{ path('easyadmin', {entity: 'Card', action: 'new'}) }}">
                                     <span class="fa fa-pencil d-inline-block mr-1" aria-hidden="true"></span> Ajouter
                                 </a>
                             </li>
@@ -61,7 +61,7 @@
                         <ul class="navbar-nav ml-auto">
                         {% if app.user %}
                             <li class="nav-item">
-                                <a class="nav-link d-inline d-md-inline-block nav-front" href="{{ path('easyadmin')}}">
+                                <a class="nav-link d-inline d-md-inline-block nav-front" title="Tableau de bord" href="{{ path('easyadmin')}}">
                                     <span class="fa fa-cog d-inline-block mr-1" aria-hidden="true"></span> Admin
                                 </a>
                             </li>
@@ -98,17 +98,17 @@
                             <h5 class="mb-3 font-weight-bold">Plan du site</h5>
                             <div>
                                 <a href="{{ path('home') }}">Accueil</a><br />
-                                <a href="{{ path('presentation') }}">Présentation</a><br />
+                                <a href="{{ path('presentation') }}" title="Présentation de l'aplication">Présentation</a><br />
                             {% if app.user %}
-                                <a href="{{ path('easyadmin', {entity: 'Card', action: 'new'}) }}">Ajouter</a><br />
-                                <a href="{{ path('easyadmin')}}">Admin</a>
+                                <a href="{{ path('easyadmin', {entity: 'Card', action: 'new'}) }}" title="Créer une carte mémoire">Ajouter</a><br />
+                                <a href="{{ path('easyadmin')}}" title="Tableau de bord">Admin</a>
                             {% endif %}
                             </div>
                         </div>
                         <div class="col-8 offset-2 text-center mt-md-4 col-md offset-md-0 text-md-left mb-5">
                             <h5 class="mb-3 font-weight-bold">Me retrouver sur</h5>
                             <div>
-                                <a href="https://github.com/PabloBuisson/openclassrooms-dwj-projet-5" title="Repo GitHub du projet">
+                                <a href="https://github.com/PabloBuisson/openclassrooms-dwj-projet-5" title="Repository GitHub du projet">
                                     <span class="fa fa-github-square logo d-block d-md-inline-block mt-2 mt-md-0"></span>GitHub (projet)
                                 </a><br />
                                 <a href="https://www.facebook.com/pabloush.page/" title="Page Facebook du développeur du site">

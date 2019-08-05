@@ -1,16 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Page introuvable{% endblock %}
+{% block title %}Accès refusé{% endblock %}
 
 {% block metaDescription %}
-    <meta name="description" content="La page que vous souhaitez voir n'existe pas.">
+    <meta name="description" content="Vous n'avez pas l'autorisation
+    pour accéder à la page.">
 {% endblock %}
 
 {% block ogMeta %}
     <!-- block og:meta (facebook) : url, title and description -->
     <meta property="og:url" content="{{ app.request.uri }}" />
-    <meta property="og:title" content="Page introuvable | ExtraMémoire" />
-    <meta property="og:description" content="La page que vous souhaitez voir n'existe pas." />
+    <meta property="og:title" content="Accès refusé | ExtraMémoire" />
+    <meta property="og:description" content="Vous n'avez pas l'autorisation
+    pour accéder à la page." />
 {% endblock %}
 
 {% block JSON %}
@@ -19,7 +21,7 @@
         {
             "@context": "http://www.schema.org",
             "@type": "WebSite",
-            "name": "Page introuvable | ExtraMémoire",
+            "name": "Accès refusé | ExtraMémoire",
             "url": "{{ app.request.uri }}"
         }
     </script>
@@ -33,10 +35,10 @@
 <div class="container">
     <div class="row">
         <div class=" col-10 offset-1 col-md-8 offset-md-2 text-center message-error mt-5">
-            <h1 class="position-relative">Oups, page introuvable !</h1>
+            <h1 class="position-relative">Oups, page refusée !</h1>
 
             <p class="message-text">
-                La page que vous souhaitez voir n'existe pas.<br />
+                Vous n'avez pas l'autorisation pour accéder à la page.<br />
                 Peut-être que vous trouverez ce que vous cherchez sur la <a href="{{ path('home') }}"
                     title="Revenir à la page d'Accueil">page d'Accueil</a>.
             </p>
