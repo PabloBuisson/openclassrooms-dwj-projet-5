@@ -12,19 +12,21 @@ $(document).ready(function () {
             "registration[email]": {
                 required: true,
                 mailverified: true, // replace mail property
-                maxlength: 254
+                maxlength: 100
             },
             "registration[pseudo]": {
                 required: true,
-                maxlength: 254
+                maxlength: 100
             },
             "registration[password]": {
                 required: true,
-                maxlength: 254
+                maxlength: 100,
+                minlength: 10
             },
             "registration[confirm_password]": {
                 required: true,
                 maxlength: 100,
+                minlength: 10,
                 equalTo: "#registration_password"
             }
         },
@@ -41,11 +43,13 @@ $(document).ready(function () {
             },
             "registration[password]": {
                 required: "Veuillez saisir votre mot de passe",
-                maxlength: "Veuillez saisir un mot de passe moins long"
+                maxlength: "Veuillez saisir un mot de passe moins long",
+                minlength: "Votre mot de passe doit faire plus de 10 caractères"
             },
             "registration[confirm_password]": {
                 required: "Veuillez confirmer votre mot de passe",
                 maxlength: "Veuillez saisir un mot de passe moins long",
+                minlength: "Votre mot de passe doit faire plus de 10 caractères",
                 equalTo: "Veuillez saisir le même mot de passe"
             }
         }

@@ -12,11 +12,11 @@ $(document).ready(function () {
             _username: {
                 required: true,
                 mailverified: true, // replace mail property
-                maxlength: 254
+                maxlength: 100
             },
             _password: {
                 required: true,
-                maxlength: 254
+                maxlength: 100
             }
         },
         messages: {

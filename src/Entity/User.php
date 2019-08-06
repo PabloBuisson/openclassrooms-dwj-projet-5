@@ -30,7 +30,7 @@ class User implements UserInterface
      * @Assert\NotBlank
      * @Assert\Email(message = "Le mail renseigné n'est pas un mail valide")
      * @Assert\Length(
-     *      max = 254,
+     *      max = 180,
      *      maxMessage = "Hum, votre mail est bien trop long !"
      * )
      */
