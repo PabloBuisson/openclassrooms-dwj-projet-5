@@ -47,9 +47,9 @@ class User implements UserInterface
      * @Assert\NotBlank
      * @Assert\Length(
      *      min = 10, 
-     *      max = 254,
+     *      max = 180,
      *      minMessage = "Votre mot de passe doit faire plus de 10 caractères",
-     *      maxMessage = "Outch ! Votre mot de passe doit être inférieur à 254 caractères"
+     *      maxMessage = "Outch ! Votre mot de passe doit être inférieur à 180 caractères"
      * )
      */
     private $password;
@@ -69,8 +69,8 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank
      * @Assert\Length(
-     *      max = 254,
-     *      maxMessage = "Outch ! Votre pseudo doit être inférieur à 254 caractères"
+     *      max = 180,
+     *      maxMessage = "Outch ! Votre pseudo doit être inférieur à 180 caractères"
      * )
      */
     private $pseudo;
