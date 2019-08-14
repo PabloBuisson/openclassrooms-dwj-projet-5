@@ -29,63 +29,65 @@
 
         <div id="bloc-page">
 
-            <nav class="navbar navbar-expand-md navbar-dark bg-primary">
-                <div class="container">
-                    <a class="navbar-brand" href="{{ path('home') }}">ExtraMémoire</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTools"
-                        aria-controls="navbarTools" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+            <header>
+                <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+                    <div class="container">
+                        <a class="navbar-brand" href="{{ path('home') }}">ExtraMémoire</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTools"
+                            aria-controls="navbarTools" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
 
-                    <div class="collapse navbar-collapse"
-                        id="navbarTools">
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link d-inline nav-front" href="{{ path('home') }}">
-                                    <span class="fa fa-home d-inline-block mr-1" aria-hidden="true"></span> Accueil 
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link d-inline nav-front" title="Présentation de l'application" href="{{ path('presentation') }}">
-                                    <span class="fa fa-lightbulb-o d-inline-block mr-2 mr-md-1" aria-hidden="true"></span> Présentation
-                                </a>
-                            </li>
-                        {% if app.user %}
-                            <li class="nav-item">
-                                <a class="nav-link d-inline nav-front" title="Créer une carte mémoire" href="{{ path('easyadmin', {entity: 'Card', action: 'new'}) }}">
-                                    <span class="fa fa-pencil d-inline-block mr-1" aria-hidden="true"></span> Ajouter
-                                </a>
-                            </li>
-                        {% endif %}
-                        </ul>
-                        <ul class="navbar-nav ml-auto">
-                        {% if app.user %}
-                            <li class="nav-item">
-                                <a class="nav-link d-inline d-md-inline-block nav-front" title="Tableau de bord" href="{{ path('easyadmin')}}">
-                                    <span class="fa fa-cog d-inline-block mr-1" aria-hidden="true"></span> Admin
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link d-inline d-md-inline-block nav-front" href="{{ path('security_logout')}}">
-                                    <span class="fa fa-power-off mr-2 d-md-none" aria-hidden="true"></span>Déconnexion
-                                </a>
-                            </li>
-                        {% else %}
-                            <li class="nav-item">
-                                <a class="nav-link d-inline d-md-inline-block nav-front" href="{{ path('security_registration')}}">
-                                    <span class="fa fa-pencil-square-o mr-2 d-md-none" aria-hidden="true"></span>Inscription
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link d-inline d-md-inline-block nav-front" href="{{ path('security_login')}}">
-                                    <span class="fa fa-sign-in mr-2 d-md-none" aria-hidden="true"></span>Connexion
-                                </a>
-                            </li>
-                        {% endif %}
-                        </ul>
+                        <div class="collapse navbar-collapse"
+                            id="navbarTools">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item active">
+                                    <a class="nav-link d-inline nav-front" href="{{ path('home') }}">
+                                        <span class="fa fa-home d-inline-block mr-1" aria-hidden="true"></span> Accueil 
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link d-inline nav-front" title="Présentation de l'application" href="{{ path('presentation') }}">
+                                        <span class="fa fa-lightbulb-o d-inline-block mr-2 mr-md-1" aria-hidden="true"></span> Présentation
+                                    </a>
+                                </li>
+                            {% if app.user %}
+                                <li class="nav-item">
+                                    <a class="nav-link d-inline nav-front" title="Créer une carte mémoire" href="{{ path('easyadmin', {entity: 'Card', action: 'new'}) }}">
+                                        <span class="fa fa-pencil d-inline-block mr-1" aria-hidden="true"></span> Ajouter
+                                    </a>
+                                </li>
+                            {% endif %}
+                            </ul>
+                            <ul class="navbar-nav ml-auto">
+                            {% if app.user %}
+                                <li class="nav-item">
+                                    <a class="nav-link d-inline d-md-inline-block nav-front" title="Tableau de bord" href="{{ path('easyadmin')}}">
+                                        <span class="fa fa-cog d-inline-block mr-1" aria-hidden="true"></span> Admin
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link d-inline d-md-inline-block nav-front" href="{{ path('security_logout')}}">
+                                        <span class="fa fa-power-off mr-2 d-md-none" aria-hidden="true"></span>Déconnexion
+                                    </a>
+                                </li>
+                            {% else %}
+                                <li class="nav-item">
+                                    <a class="nav-link d-inline d-md-inline-block nav-front" href="{{ path('security_registration')}}">
+                                        <span class="fa fa-pencil-square-o mr-2 d-md-none" aria-hidden="true"></span>Inscription
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link d-inline d-md-inline-block nav-front" href="{{ path('security_login')}}">
+                                        <span class="fa fa-sign-in mr-2 d-md-none" aria-hidden="true"></span>Connexion
+                                    </a>
+                                </li>
+                            {% endif %}
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            </nav>
+                </nav>
+            </header>
 
             {% block body %}{% endblock %}
 
