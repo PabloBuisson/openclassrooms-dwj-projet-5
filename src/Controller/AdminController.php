@@ -114,6 +114,14 @@ class AdminController extends BaseAdminController
         return $card;
     }
 
+/*     public function persistCardEntity($entity)
+    {
+        dd($entity->getTags();
+    foreach ($variable as $key => $value) {
+        # code...
+    });
+    } */
+
     // launched before the submission of the form that creates a new tag
     public function createNewTagEntity()
     {
@@ -123,7 +131,7 @@ class AdminController extends BaseAdminController
         return $tag;
     }
 
-    public function createCardEntityFormBuilder($entity, $view)
+/*     public function createCardEntityFormBuilder($entity, $view)
     {
         $formBuilder = parent::createEntityFormBuilder($entity, $view);
         
@@ -154,9 +162,17 @@ class AdminController extends BaseAdminController
                 };
 
                 $formBuilder->add($property, EntityType::class, $options);
+
             }
         }
 
         return $formBuilder;
-    }
+    } */
+
+    /*    l.165          Require a TagType with just add(name);   
+                $formBuilder->add('tags', CollectionType::class, [
+                    'entry_type' => TagType::class,
+                    'entry_options' => ['label' => false],
+                    'allow_add' => true,
+                ]); */
 }

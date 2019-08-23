@@ -20,7 +20,7 @@ if ($trustedHosts = $_SERVER['TRUSTED_HOSTS'] ?? $_ENV['TRUSTED_HOSTS'] ?? false
     Request::setTrustedHosts([$trustedHosts]);
 }
 
-$_SERVER['APP_DEBUG'] = false; // for the production environment. Comment for the dev environment
+$_SERVER['APP_DEBUG'] = true; // "true" for the dev environment, "false" for the prod environment
 
 $kernel = new Kernel($_SERVER['APP_ENV'], (bool) $_SERVER['APP_DEBUG']);
 $request = Request::createFromGlobals();
