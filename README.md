@@ -38,5 +38,5 @@ Ainsi, voyez la page d'accueil comme l'interface de l'application ; n'oubliez pa
 * Créez votre base de données
 * Modifiez votre .env pour renseigner les identifiants de votre base de données [ DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name ]
 * Faites une migration [ php bin/console make:migration ] puis [ php bin/console doctrine:migrations:migrate ]
-* Veillez à ce que la ligne 23 de l'index.php [ public/index.php ] soit commentée en développement 
+* Veillez à ce que la ligne 23 de l'index.php [ public/index.php ] corresponde au bon environnement 
 * En cas de problème ou d'éventuelles questions, [contactez-moi !](mailto:pablo.buisson@gmail.com)

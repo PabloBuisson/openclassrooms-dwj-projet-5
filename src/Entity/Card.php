@@ -44,7 +44,12 @@ class Card
     private $step = 0;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Tag", mappedBy="cards", fetch="EAGER")
+     * @ORM\ManyToMany(
+     *      targetEntity="App\Entity\Tag", 
+     *      mappedBy="cards", 
+     *      fetch="EAGER",
+     *      cascade={"persist"}
+     * )
      */
     private $tags;
 
@@ -144,6 +149,10 @@ class Card
             $tag->addCard($this);
         }
 
+        if (!$tag->getUser()) {
+            $tag->setUser($this->getUser());
+        }
+        
         return $this;
     }
 
