@@ -9,8 +9,7 @@ easy_admin:
                     - { property: 'recto', label: 'Recto', help: 'Le sujet à apprendre' }
                     - { property: 'verso', label: 'Verso', help: 'Sa définition' }
                     - { property: 'datePublication', label: 'Prochaine révision' }
-                    - { property: 'tags', label: 'Ajouter un tag', type: 'collection', type_options: { entry_type: 'App\Form\TagType', allow_delete: true, allow_add: true, 'by_reference': false }}
-                    # - { property: 'tags', label: 'Tags', type_options: { class: 'App\Entity\Tag', 'by_reference': false }} #, query_builder: 'App\Controller\TagController::getTagsUser'
+                    - { property: 'tags', label: 'Tag(s)', type: 'collection', type_options: { entry_type: 'App\Form\TagType', allow_delete: true, allow_add: true, 'by_reference': false }}
             list:
                 fields: [{property: 'recto', label: 'Cartes'}, {property: 'tags', label: 'Tags'}, {property: 'datePublication', label: 'Prochaine révision'}]
                 title: "Parcourez vos flashcards"

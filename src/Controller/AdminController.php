@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Tag;
 use App\Entity\Card;
+use App\Repository\TagRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use EasyCorp\Bundle\EasyAdminBundle\Event\EasyAdminEvents;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\EasyAdminController as BaseAdminController;
@@ -114,13 +115,46 @@ class AdminController extends BaseAdminController
         return $card;
     }
 
-/*     public function persistCardEntity($entity)
+    // check tags to avoid duplication
+    public function persistCardEntity($entity)
     {
-        dd($entity->getTags();
-    foreach ($variable as $key => $value) {
-        # code...
-    });
-    } */
+        $this->searchTagCreated($entity);
+
+        $this->em->persist($entity);
+        $this->em->flush();
+    }
+
+    // check tags to avoid duplication
+    public function updateCardEntity($entity)
+    {
+        $this->searchTagCreated($entity);
+
+        $this->em->flush();
+    }
+
+    // check if the tag (by the name) is already created (to avoid duplication)
+    public function searchTagCreated($entity)
+    {
+        $tags = $entity->getTags();
+
+        $repo = $this->em->getRepository('App\Entity\Tag');
+
+        foreach ($tags as $key => $value) {
+            $name = $value->getName(); // ex. "maths"
+
+            $tagCreated = $repo->findOneBy([
+                'name' => $name,
+                'user' => $this->getUser()
+            ]); // ex. the tag of the user labelled "maths"
+
+            if ($tagCreated) {
+                $entity->removeTag($value);
+                $entity->addTag($tagCreated);
+            }
+        };
+
+        return $entity;
+    }
 
     // launched before the submission of the form that creates a new tag
     public function createNewTagEntity()
@@ -130,49 +164,4 @@ class AdminController extends BaseAdminController
 
         return $tag;
     }
-
-/*     public function createCardEntityFormBuilder($entity, $view)
-    {
-        $formBuilder = parent::createEntityFormBuilder($entity, $view);
-        
-        // returns all the data expected for the form
-        $fields = $formBuilder->all();
-
-        // for each property, change the one named tags
-        foreach ($fields as $property => $content) {
-            if ($property == 'tags') {
-                $options = [
-                    'attr' => ['data-widget' => 'select2'],
-                    'placeholder' => 'label.form.empty_value',
-                    'help' => 'Tag(s) associé(s) [option]',
-                    'by_reference' => false,
-                    'required' => false,
-                    'choice_label' => 'name',
-                    'multiple' => true,
-                    'class' => 'App\Entity\Tag'
-                ];
-
-                $options['query_builder'] = function (EntityRepository $repo) {
-                    // query on the Table class with the current user
-                    $query = $repo->createQueryBuilder('t');
-
-                    return $query
-                    ->andWhere('t.user = :user')
-                    ->setParameter('user', $this->getUser()->getId());
-                };
-
-                $formBuilder->add($property, EntityType::class, $options);
-
-            }
-        }
-
-        return $formBuilder;
-    } */
-
-    /*    l.165          Require a TagType with just add(name);   
-                $formBuilder->add('tags', CollectionType::class, [
-                    'entry_type' => TagType::class,
-                    'entry_options' => ['label' => false],
-                    'allow_add' => true,
-                ]); */
 }

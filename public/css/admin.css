@@ -103,3 +103,11 @@ a.btn.btn-link.pr-0.action-list {
     background-color: #EC8B32 !important;
     border: #EC8B32 !important;
 }
+
+[id^=card_tags_] .form-control-label {
+    display: none;
+}
+
+[id^=card_tags_] .form-widget input.form-control {
+    max-width: 315px;
+}
