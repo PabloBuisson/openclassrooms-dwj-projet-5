@@ -13,22 +13,10 @@ class CardType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('reset', SubmitType::class, [
-                'label' => 'À revoir',
-                'attr' => ['class' => 'btn btn-outline-danger']
-            ])
-            ->add('hard', SubmitType::class, [
-                'label' => 'Difficile',
-                'attr' => ['class' => 'btn btn-outline-warning']
-            ])
-            ->add('medium', SubmitType::class, [
-                'label' => 'Correct',
-                'attr' => ['class' => 'btn btn-outline-info']
-            ])
-            ->add('easy', SubmitType::class, [
-                'label' => 'Facile',
-                'attr' => ['class' => 'btn btn-outline-success']
-            ])
+            ->add('reset', SubmitType::class)
+            ->add('hard', SubmitType::class)
+            ->add('medium', SubmitType::class)
+            ->add('easy', SubmitType::class)
         ;
     }
 
