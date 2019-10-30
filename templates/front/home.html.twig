@@ -30,6 +30,7 @@
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 {% endblock %}
 
 {% block body %}
@@ -46,9 +47,10 @@
                     Vous rêvez de retenir toutes les capitales du monde ? Vous voulez étoffer votre vocabulaire ?
                     Ne cherchez plus, <span class="font-weight-bold">ExtraMémoire</span> est fait pour vous !</p>
 
-                <span class="fa fa-lightbulb-o message-icon mt-5" aria-hidden="true"></span>
-               <h2 class="mt-5">Apprenez facilement et rapidement grâce aux cartes mémoire</h2>
-                <p class="mt-3 text-presentation text-justify">ExtraMémoire est une <strong>application web</strong> qui
+                <span data-aos="fade-left" class="fa fa-lightbulb-o message-icon mt-5" aria-hidden="true"></span>
+                <h2 data-aos="fade-left" data-aos-offset="150" class="mt-5">Apprenez facilement et rapidement grâce aux cartes mémoire</h2>
+                <p data-aos="fade-left" data-aos-offset="180" class="mt-3 text-presentation text-justify">ExtraMémoire est une
+                    <strong>application web</strong> qui
                     reprend le système des flashcards, ou <strong>cartes mémoire</strong> en français. Lui-même basé sur
                     le principe de la répétition espacée, ce système est le meilleur moyen pour retenir durablement des
                     mots, des dates, des événements, bref, tout ce que vous voulez ! <br />
@@ -60,18 +62,23 @@
                     ce mot que vous avez sur le bout de la langue !
                 </p>
                 
-                <span class="fa fa-user-circle-o message-icon mt-5" aria-hidden="true"></span>
-                <h2 class="mt-5">Une application personnalisée</h2>
-                <p class="mt-3 text-presentation text-justify">Et c’est là l’un des nombreux avantages de ExtraMémoire ;
+                <span data-aos="fade-right" class="fa fa-user-circle-o message-icon mt-5" aria-hidden="true"></span>
+                <h2 data-aos="fade-right" data-aos-offset="150" class="mt-5">Une application personnalisée</h2>
+                <p data-aos="fade-right" data-aos-offset="180" class="mt-3 text-presentation text-justify">Et c’est là
+                    l’un des nombreux
+                    avantages de ExtraMémoire ;
                     l’application dépend entièrement de l’utilisateur, et ne lui impose aucune restriction. Vous décidez
                     ce que vous voulez <strong>apprendre</strong>, et vous déterminez la quantité de vos révisions quotidiennes et la
                     fréquence de vos révisions. L’application se contente de vous accompagner dans votre
                     <strong>apprentissage</strong>, en vous proposant des dates de révisions adaptées à vos
                     réponses.</p>
                 
-                <span class="fa fa-heart message-icon mt-5" aria-hidden="true"></span>
-                <h2 class="mt-5">Un fonctionnement simple et adapté à vos préférences</h2>
-                <p class="mt-3 text-presentation text-justify">Pour apprendre, par exemple, un nouveau mot, vous devrez
+                <span data-aos="fade-left" class="fa fa-heart message-icon mt-5" aria-hidden="true"></span>
+                <h2 data-aos="fade-left" data-aos-offset="150" class="mt-5">Un fonctionnement simple et adapté à vos
+                    préférences</h2>
+                <p data-aos="fade-left" data-aos-offset="180" class="mt-3 text-presentation text-justify">Pour
+                    apprendre, par exemple, un
+                    nouveau mot, vous devrez
                     créer une nouvelle carte depuis votre tableau de bord, en renseignant, sur le recto de la carte, la
                     question ou le sujet à <strong>apprendre</strong> et, sur le verso, la réponse attendue. Et… c’est tout ! <br />
                     La nouvelle carte s’affichera sur la page d’accueil et, selon la difficulté renseignée, celle-ci
@@ -80,9 +87,12 @@
                     le fonctionnement des cartes et de l’application, rendez-vous sur <a href="{{ path('presentation') }}" title="Apprenez comment utiliser les cartes mémoire">la page de présentation</a>.
                 </p>
                 
-                <span class="fa fa-check message-icon mt-5" aria-hidden="true"></span>
-                <h2 class="mt-5">N'attendez plus pour améliorer votre mémoire !</h2>
-                <p class="mt-3 mb-5 text-presentation text-justify">Vous souhaitez devenir un pro de la
+                <span data-aos="fade-right" class="fa fa-check message-icon mt-5" aria-hidden="true"></span>
+                <h2 data-aos="fade-right" data-aos-offset="150" class="mt-5">N'attendez plus pour améliorer votre
+                    mémoire !</h2>
+                <p data-aos="fade-right" data-aos-offset="180" class="mt-3 mb-5 text-presentation text-justify">Vous
+                    souhaitez devenir un pro
+                    de la
                     <strong>mémoire</strong> ? N’attendez plus et inscrivez-vous sur ExtraMémoire en vous rendant sur
                     <a href="{{ path('security_registration') }}" title="S'inscrire sur l'application">la page d’inscription</a>.
                     Si vous êtes déjà inscrit, rendez-vous sur <a href="{{ path('security_login') }}" title="Créer et réviser de nouvelles cartes">la page de connexion</a>.
@@ -170,4 +180,8 @@
 
 {% block javascripts %}
     <script src="{{ asset('js/home.js') }}"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 {% endblock %}
