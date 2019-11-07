@@ -29,6 +29,7 @@
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/presentation.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 {% endblock %}
 
 {% block body %}
@@ -65,7 +66,7 @@
         <div class="presentation-white-stripe py-4">
             <div class="container">
                 <div class="row">
-                    <div class="col-10 offset-1 text-center mt-5 mb-3">
+                    <div data-aos="fade-left" class="col-10 offset-1 text-center mt-5 mb-3">
                     <h2>Comment ça marche, une carte mémoire ?</h2>
                     <p class="mt-5 mb-5 text-presentation text-justify">Voyez l'ensemble de vos flashcards, ou cartes
                         mémoire, comme un paquet de cartes, placées dans différentes boîtes. Chaque boîte symbolise le
@@ -88,7 +89,7 @@
         <div class="presentation-orange-stripe py-4">
             <div class="container">
                 <div class="row">
-                    <div class="col-10 offset-1 text-center mt-5 mb-3">
+                    <div data-aos="fade-right" class="col-10 offset-1 text-center mt-5 mb-3">
                     <h2 class="text-white">Comment créer et réviser mes flashcards ?</h2>
                     <p class="mt-5 mb-5 text-presentation text-justify">
                         <span class="font-weight-bold">ExtraMémoire</span> reprend le fonctionnement des logiciels
@@ -106,7 +107,7 @@
         <div class="presentation-white-stripe py-4">
             <div class="container">
                 <div class="row">
-                    <div class="col-10 offset-1 text-center mt-5 mb-3">
+                    <div data-aos="fade-left" class="col-10 offset-1 text-center mt-5 mb-3">
                     <h2>Comment décider les dates de révision de mes cartes mémoire ?</h2>
                     <p class="mt-5 mb-5 text-presentation text-justify">Pour faire court : l'application décide pour vous,
                         selon la difficulté à laquelle vous avez répondu à la question. <br />
@@ -139,7 +140,7 @@
         <div class="presentation-orange-stripe py-4">
             <div class="container">
                 <div class="row">
-                    <div class="col-10 offset-1 text-center mt-5 mb-3">
+                    <div data-aos="fade-right" class="col-10 offset-1 text-center mt-5 mb-3">
                     <h2 class="text-white">Combien de flashcards puis-je réviser quotidiennement ?</h2>
                     <p class="mt-5 mb-5 text-presentation text-justify">
                         La limite quotidienne est fixée initialement à <span class="font-weight-bold">50 cartes
@@ -155,7 +156,7 @@
         <div class="presentation-white-stripe presentation-last-stripe pt-4">
             <div class="container">
                 <div class="row">
-                    <div class="col-10 offset-1 text-center mt-5 mb-3">
+                    <div data-aos="fade-left" class="col-10 offset-1 text-center mt-5 mb-3">
                     <h2>Comment bien apprendre ?</h2>
                     <p class="mt-5 text-presentation text-justify">
                         Si vous êtes familier de la langue de Shakespeare, je vous recommande chaudement cet article,
@@ -192,4 +193,11 @@
             </div>     
         </div>
     </section>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 {% endblock %}
