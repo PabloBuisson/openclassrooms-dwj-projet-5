@@ -10,7 +10,7 @@ easy_admin:
                     - { property: 'dailyLimit', label: 'Limite de révisions quotidiennes' }
                     - { property: 'pseudo', label: 'Pseudo' }
                 actions:
-                    - { name : '-delete', icon: 'trash', label: 'Supprimer mon compte', css_class: 'btn btn-danger' }
+                    - { name : 'delete', icon: 'trash', label: 'Supprimer mon compte', css_class: 'btn btn-danger' }
             list:
                 fields: [{property: 'pseudo', label: 'Pseudo'}, {property: 'cards', label: 'Nb. cartes'}, {property: 'tags', label: 'Nb. tags'}, {property: 'dailyLimit', label: 'Nb. révisions quotidiennes'}]
                 title: "Vos paramètres"

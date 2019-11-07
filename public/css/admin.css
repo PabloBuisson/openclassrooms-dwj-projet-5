@@ -59,6 +59,12 @@ a.user-action-logout:hover {
     color: white;
 }
 
+#flash-messages .alert {
+    font-weight: bold;
+    color: white;
+    background-color: grey;
+}
+
 @media all and (max-width: 630px) {
 
     .nav-front {
