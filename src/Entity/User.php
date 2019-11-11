@@ -330,16 +330,4 @@ class User implements UserInterface
 
         return $this;
     }
-
-/*     // add to allow changes/removal of User
-    public function serialize()
-    {
-        return serialize($this->id);
-    }
-
-    // add to allow changes/removal of User
-    public function unserialize($data)
-    {
-        $this->id = unserialize($data);
-    } */
 }
