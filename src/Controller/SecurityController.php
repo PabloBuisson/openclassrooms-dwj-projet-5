@@ -33,6 +33,11 @@ class SecurityController extends AbstractController
             $hash = $encoder->encodePassword($user, $user->getPassword());
             $user->setPassword($hash);
 
+            // add power to user (it's best to add ["ROLE_ADMIN"] directly in database)
+            // if ($user->getEmail() == 'XXXXXXXXXXX') {
+            //    $user->setRoles(['ROLE_ADMIN']);
+            // }
+
             // add daily count to User parameters
             $userCount = new DailyCount();
             $userCount->setUser($user);

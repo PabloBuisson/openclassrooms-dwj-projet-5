@@ -152,6 +152,12 @@ class User implements UserInterface
         return $this;
     }
 
+    // check for ['ROLE_ADMIN'], etc.
+    public function hasRole($role)
+    {
+        return in_array(strtoupper($role), $this->getRoles(), true);
+    }
+
     /**
      * @see UserInterface
      */
