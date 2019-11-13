@@ -65,8 +65,8 @@ class UserController extends BaseAdminController
             return $this->redirect($this->generateUrl('easyadmin', ['action' => 'list', 'entity' => $this->entity['name']]));
         }
 
-        // if (...->hasRole('ROLE_ADMIN')) {
-        if ($this->request->attributes->get('easyadmin')['item']->getPseudo() == 'admin') {
+        // if (...->getPseudo() == 'admin') {
+        if ($this->request->attributes->get('easyadmin')['item']->hasRole('ROLE_ADMIN')) {
             $this->addFlash('error', 'Vous ne pouvez pas supprimer un compte Admin !');
             return $this->redirect($this->generateUrl('easyadmin', ['action' => 'list', 'entity' => $this->entity['name']]));
         }
