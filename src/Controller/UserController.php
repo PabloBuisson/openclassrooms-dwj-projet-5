@@ -74,12 +74,14 @@ class UserController extends BaseAdminController
         $id = $this->request->query->get('id');
         $form = $this->createDeleteForm($this->entity['name'], $id);
         $form->handleRequest($this->request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $easyadmin = $this->request->attributes->get('easyadmin');
             $entity = $easyadmin['item'];
+            
             $this->dispatch(EasyAdminEvents::PRE_REMOVE, ['entity' => $entity]);
+
             try {
-                $this->executeDynamicMethod('remove<EntityName>Entity', [$entity, $form]);
                 // delete User
                 $this->em->remove($entity);
                 $this->em->flush();
