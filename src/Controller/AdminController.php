@@ -109,7 +109,7 @@ class AdminController extends BaseAdminController
         $today = new \DateTime();
 
         $card->setDateCreation(new \DateTime())
-             ->setDatePublication($today->setTime (00, 00, 00))
+             ->setDatePublication($today->setTime(00, 00, 00))
              ->setUser($user);
 
         return $card;
