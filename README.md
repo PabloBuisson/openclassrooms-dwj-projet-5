@@ -3,6 +3,13 @@
 ExtraMémoire est une application web de cartes mémoire virtuelles développée avec Symfony 4.3. 
 [Formation Développeur Web Junior d'OpenClassrooms, projet 5]
 
+## Version 1.1.0
+
+### Changements
+* Possibilité de supprimer son compte
+* Possibilité de créer un tag à la volée (pendant la création d'une carte)
+* Annule toute duplication de tag ou de carte
+
 ## Le projet
 
 ExtraMémoire est une application web qui vous permet de créer et modifier vos cartes mémoire en toute simplicité.
@@ -38,5 +45,5 @@ Ainsi, voyez la page d'accueil comme l'interface de l'application ; n'oubliez pa
 * Créez votre base de données
 * Modifiez votre .env pour renseigner les identifiants de votre base de données [ DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name ]
 * Faites une migration [ php bin/console make:migration ] puis [ php bin/console doctrine:migrations:migrate ]
-* Veillez à ce que la ligne 23 de l'index.php [ public/index.php ] soit commentée en développement 
+* Veillez à ce que la ligne 23 de l'index.php [ public/index.php ] corresponde au bon environnement 
 * En cas de problème ou d'éventuelles questions, [contactez-moi !](mailto:pablo.buisson@gmail.com)

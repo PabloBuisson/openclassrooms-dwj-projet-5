@@ -7,7 +7,7 @@ use App\Entity\DailyCount;
 use App\Entity\LastConnection;
 use App\Form\RegistrationType;
 use Symfony\Component\HttpFoundation\Request;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,7 +19,7 @@ class SecurityController extends AbstractController
     /**
      * @Route("/inscription", name="security_registration")
      */
-    public function registration(Request $request, ObjectManager $manager, UserPasswordEncoderInterface $encoder)
+    public function registration(Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder)
     {
         // the object bound to the form
         $user = new User();
@@ -32,6 +32,11 @@ class SecurityController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $hash = $encoder->encodePassword($user, $user->getPassword());
             $user->setPassword($hash);
+
+            // add power to user (it's best to add ["ROLE_ADMIN"] directly in database)
+            // if ($user->getEmail() == 'XXXXXXXXXXX') {
+            //    $user->setRoles(['ROLE_ADMIN']);
+            // }
 
             // add daily count to User parameters
             $userCount = new DailyCount();
