@@ -25,7 +25,7 @@ Ainsi, voyez la page d'accueil comme l'interface de l'application ; n'oubliez pa
 ## Installation (dev)
 
 ### Environnement
-* Symfony 4.3.1
+* Symfony 4.3.9
 * PHP 7.2 minimum
 * Composer
 
