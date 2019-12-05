@@ -3,6 +3,13 @@
 ExtraMémoire est une application web de cartes mémoire virtuelles développée avec Symfony 4.3. 
 [Formation Développeur Web Junior d'OpenClassrooms, projet 5]
 
+## Version 1.1.0
+
+### Changements
+* Possibilité de supprimer son compte
+* Possibilité de créer un tag à la volée (pendant la création d'une carte)
+* Annule toute duplication de tag ou de carte
+
 ## Le projet
 
 ExtraMémoire est une application web qui vous permet de créer et modifier vos cartes mémoire en toute simplicité.
