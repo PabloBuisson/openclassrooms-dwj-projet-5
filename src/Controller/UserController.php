@@ -4,8 +4,6 @@ namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Session\Session;
 use EasyCorp\Bundle\EasyAdminBundle\Event\EasyAdminEvents;
-use Doctrine\DBAL\Exception\ForeignKeyConstraintViolationException;
-use EasyCorp\Bundle\EasyAdminBundle\Exception\EntityRemoveException;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\EasyAdminController as BaseAdminController;
 
 class UserController extends BaseAdminController
