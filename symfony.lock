@@ -142,6 +142,9 @@
     "pagerfanta/pagerfanta": {
         "version": "v2.1.2"
     },
+    "php": {
+        "version": "7.4"
+    },
     "phpdocumentor/reflection-common": {
         "version": "1.0.1"
     },

@@ -6,7 +6,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "beberlei/doctrineextensions": "^1.2",
-        "easycorp/easyadmin-bundle": "^2.2",
+        "easycorp/easyadmin-bundle": "2.*@dev",
         "sensio/framework-extra-bundle": "^5.1",
         "symfony/apache-pack": "^1.0",
         "symfony/asset": "4.3.*",
