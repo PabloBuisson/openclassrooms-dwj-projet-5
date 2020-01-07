@@ -79,3 +79,11 @@
         font-size: 1.6rem;
     }
 }
+
+/* ---------- MAINTENANCE ---------- */
+
+#bloc-page .disabled {
+    cursor: not-allowed;
+    pointer-events: auto;
+    z-index: 0;
+}
