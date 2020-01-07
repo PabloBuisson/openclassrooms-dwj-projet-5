@@ -22,6 +22,10 @@ body {
     margin-bottom: 20px;
 }
 
+.main-header #header-logo {
+    margin-bottom: 16px !important;
+}
+
 #header-logo a:hover, #header-logo a:active, #header-logo a:focus {
     text-shadow: 2px 2px 2px rgb(195, 116, 41);
 }
@@ -64,6 +68,26 @@ a.user-action-logout:hover {
     color: white;
     background-color: grey;
 }
+
+/* easy admin 2.3.5 version */
+
+.field-collection-item-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.field-collection-item-row .field-collection-item-action {
+    flex: 0 0 35px;
+}
+
+.field-collection-item-action {
+    top: -3px !important;
+}
+
+.alert .alert-close:hover {
+    opacity: 1;
+}
+
 
 @media all and (max-width: 630px) {
 

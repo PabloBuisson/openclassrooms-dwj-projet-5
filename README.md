@@ -3,7 +3,7 @@
 ExtraMémoire est une application web de cartes mémoire virtuelles développée avec Symfony 4.3. 
 [Formation Développeur Web Junior d'OpenClassrooms, projet 5]
 
-## Version 1.1.0
+## Version 1.1.2
 
 ### Changements
 * Possibilité de supprimer son compte
@@ -45,5 +45,17 @@ Ainsi, voyez la page d'accueil comme l'interface de l'application ; n'oubliez pa
 * Créez votre base de données
 * Modifiez votre .env pour renseigner les identifiants de votre base de données [ DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name ]
 * Faites une migration [ php bin/console make:migration ] puis [ php bin/console doctrine:migrations:migrate ]
-* Veillez à ce que la ligne 23 de l'index.php [ public/index.php ] corresponde au bon environnement 
+* Veillez à ce que la ligne 23 de l'index.php [ public/index.php ] corresponde au bon environnement
+* À surveiller en cas de problème d'installation/incompatibilité : 
+```
+composer.json
+remplacer la ligne 9 "easycorp/easyadmin-bundle": "2.*@dev"
+par "easycorp/easyadmin-bundle": "^2.2"
+
+symfony.lock
+ligne 144, enlever :
+ "php": {
+        "version": "7.4"
+    },
+``` 
 * En cas de problème ou d'éventuelles questions, [contactez-moi !](mailto:pablo.buisson@gmail.com)
