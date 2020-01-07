@@ -6,6 +6,7 @@ ExtraMémoire est une application web de cartes mémoire virtuelles développée
 ## Version 1.1.2
 
 ### Changements
+* Version PHP demandée : 7.4
 * Possibilité de supprimer son compte
 * Possibilité de créer un tag à la volée (pendant la création d'une carte)
 * Annule toute duplication de tag ou de carte
@@ -26,7 +27,7 @@ Ainsi, voyez la page d'accueil comme l'interface de l'application ; n'oubliez pa
 
 ### Environnement
 * Symfony 4.3.9
-* PHP 7.2 minimum
+* PHP 7.4 minimum
 * Composer
 
 ### Bundles/Extensions
