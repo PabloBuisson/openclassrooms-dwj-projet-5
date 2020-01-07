@@ -69,6 +69,26 @@ a.user-action-logout:hover {
     background-color: grey;
 }
 
+/* easy admin 2.3.5 version */
+
+.field-collection-item-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.field-collection-item-row .field-collection-item-action {
+    flex: 0 0 35px;
+}
+
+.field-collection-item-action {
+    top: -3px !important;
+}
+
+.alert .alert-close:hover {
+    opacity: 1;
+}
+
+
 @media all and (max-width: 630px) {
 
     .nav-front {
